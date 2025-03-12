@@ -3,6 +3,7 @@ b = a
 
 print(f'Esta es la lista a => {a}')
 print(f'Esta es la lista :b => {b}')
+#To delete an element from the array
 
 del a[0]
 #To know its id
