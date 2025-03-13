@@ -31,3 +31,25 @@ for i in numbers:
     if i == 3:
         continue
     print("Here i is equal to: ", i)
+
+#FIBONACCI SERIE
+
+x,y = 0,1
+while y < 1000:
+    print("This is the order: => ", y)
+    x,y = y, x+y
+
+x = int(input("Please enter an integer"))
+if x < 0:
+    x = 0
+    print('Negative changed to zero')    
+elif x == 0:
+    print('Negative changed to zero')
+elif x == 1:
+    print('Single')
+else: 
+    print('More')
+
+##FOR STATEMENTS
+
+words = ['cat', 'window']
