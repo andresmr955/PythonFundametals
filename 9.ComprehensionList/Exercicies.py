@@ -27,3 +27,8 @@ excerciseTwoSolution = [ item.upper() for item in excerciseTwo if len(item) > 3]
 
 print(f'This is the solution: => {excerciseTwoSolution}')
 #Datos de salida excerciseTwo = ["MONTANA", "ESTRELLA"]
+
+numbers_given = [1,2,3,4,5,6,7,8,9,10]
+double_numbers = [item * 2 for item in numbers_given]
+print("Solution 1 => ", double_numbers)
+        
