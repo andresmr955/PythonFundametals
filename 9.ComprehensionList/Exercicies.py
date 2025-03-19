@@ -59,3 +59,19 @@ matriz_transpuesta = [
 transposed = [[list_inside_list[len_of_list] for list_inside_list in matriz] for len_of_list in range(len(matriz[0])) ]
 print(len(matriz[0]))
 print("Solution 4 => ",transposed)
+
+
+personas = [
+    {"nombre": "Juan", "edad": 25, "ciudad": "Madrid"},
+    {"nombre": "Ana", "edad": 32, "ciudad": "Madrid"},
+    {"nombre": "Pedro", "edad": 35, "ciudad": "Barcelona"},
+    {"nombre": "Laura", "edad": 40, "ciudad": "Madrid"}
+]
+
+
+solucion = [ personas[len_dicti]["nombre"] for len_dicti in range(len(personas)) if personas[len_dicti]["edad"] > 30 and personas[len_dicti]["ciudad"] == "Madrid"]
+
+
+#output = ['This is out output waiting: ', {"nombre": "Ana", "edad": 32, "ciudad": "Madrid"},{"nombre": "Laura", "edad": 40, "ciudad": "Madrid"}]
+print("Solution 5 => ",solucion)
+
