@@ -75,3 +75,8 @@ solucion = [ personas[len_dicti]["nombre"] for len_dicti in range(len(personas))
 #output = ['This is out output waiting: ', {"nombre": "Ana", "edad": 32, "ciudad": "Madrid"},{"nombre": "Laura", "edad": 40, "ciudad": "Madrid"}]
 print("Solution 5 => ",solucion)
 
+
+list_ex_six = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+
+list_new_ex_six = [ i * 2 if i % 2 == 0 else i for i in list_ex_six]
+print("Solution 5 => ", list_new_ex_six)
