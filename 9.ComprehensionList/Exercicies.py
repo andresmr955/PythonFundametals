@@ -32,3 +32,7 @@ numbers_given = [1,2,3,4,5,6,7,8,9,10]
 double_numbers = [item * 2 for item in numbers_given]
 print("Solution 1 => ", double_numbers)
         
+
+list_words = ["sol", "mar", "montana", "rio", "estrella"]
+new_list = [word_x.upper() for word_x in list_words if len(word_x) > 3]
+print("Solution 2 => ",new_list)
