@@ -42,3 +42,20 @@ list_one = ["name", "age", "job_title"]
 list_two = ["Juan", 30, "Engineer"]
 dictionary_combined = {list_one[i]: list_two[i] for i in range(len(list_one))}
 print("Solution 3 => ",dictionary_combined)
+
+matriz = [
+    [1, 2, 3],
+    [4, 5, 6],
+    [7, 8, 9]
+]
+
+matriz_transpuesta = [
+    [1, 4, 7],
+    [2, 5, 8],
+    [3, 6, 9]
+]
+
+
+transposed = [[list_inside_list[len_of_list] for list_inside_list in matriz] for len_of_list in range(len(matriz[0])) ]
+print(len(matriz[0]))
+print("Solution 4 => ",transposed)
