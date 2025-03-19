@@ -36,3 +36,9 @@ print("Solution 1 => ", double_numbers)
 list_words = ["sol", "mar", "montana", "rio", "estrella"]
 new_list = [word_x.upper() for word_x in list_words if len(word_x) > 3]
 print("Solution 2 => ",new_list)
+
+
+list_one = ["name", "age", "job_title"]
+list_two = ["Juan", 30, "Engineer"]
+dictionary_combined = {list_one[i]: list_two[i] for i in range(len(list_one))}
+print("Solution 3 => ",dictionary_combined)
