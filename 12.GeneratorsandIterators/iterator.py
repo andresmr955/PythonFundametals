@@ -4,7 +4,7 @@
 my_list = [1,2,3,4]
 
 #Get one list
-my_iter= iter(my_list)
+my_iter = iter(my_list)
 
 #Use the iterator
 print(next(my_iter)) 
