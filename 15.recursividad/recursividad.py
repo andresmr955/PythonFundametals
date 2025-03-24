@@ -1,35 +1,19 @@
-def factorial(n):
-    if n == 0:
-        return 1
-    else: 
-        return n * factorial(n-1)
+## method .isdigit()
+# 
 
-print(factorial(30))
 
-def fibonacci(a):
-    if a == 0:
-        return 0
-    elif a == 1:
-        return 1
-    else: 
-        return  fibonacci(a-1) + fibonacci(a-2)
+numero_usuario_input = input("Give an int positive number: => ")
 
-number = 4
-print(fibonacci(number))
+def suma_de_digitos(numero_usuario):
+    if not numero_usuario.isdigit():
+        print("Please enter a int positive number: ")
+        return
+    elif numero_usuario == 0:
+        print("Please give a number different to zero")
+    else:
+        suma = 0
+        for i in str(numero_usuario):
+            suma += int(i)
+        print(suma)
     
-
-
-
-def fibowhile(j):
-    k, l = 0, 1
-    contador = 0
-    while contador < j:
-        yield  k
-        k, l = l, k + l  
-        contador +=1
-
-for i in fibowhile(8):
-    print(i)
-    
-
-    
+suma_de_digitos(numero_usuario_input)
