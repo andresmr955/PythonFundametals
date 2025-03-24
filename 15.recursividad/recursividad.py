@@ -17,3 +17,19 @@ def fibonacci(a):
 number = 4
 print(fibonacci(number))
     
+
+
+
+def fibowhile(j):
+    k, l = 0, 1
+    contador = 0
+    while contador < j:
+        yield  k
+        k, l = l, k + l  
+        contador +=1
+
+for i in fibowhile(8):
+    print(i)
+    
+
+    
