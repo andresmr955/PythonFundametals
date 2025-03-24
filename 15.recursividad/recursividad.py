@@ -83,3 +83,36 @@ print(factEjerc(5))
 3 * 2
 2 * 1
 1 * 0
+a = int(input("Primer numero"))
+b = int(input("Segundo  numero"))
+
+def potencia_numero(x,y):
+    if y == 0:
+        return 1
+    else:
+        return x * potencia_numero(x, y - 1) 
+    
+    
+print(potencia_numero(a,b)) 
+
+cadena = "Andres"
+print(cadena[-1])
+
+print(len(cadena))
+
+
+cadena_new = ""
+cadena_new = cadena[5] + cadena[4] + cadena[3] + cadena[2] + cadena[1] + cadena[0]
+
+print(cadena_new)
+
+def cadena_Invertida(c):
+    len(c)
+    cadena_new = ""
+    if len(c) == 0:
+        return ""
+    else:
+        cadena_new = c[len(c) -1]  + cadena_Invertida(c[:-1])
+        return cadena_new
+cadena = "Andres"
+print(cadena_Invertida(cadena))
