@@ -44,7 +44,7 @@ class Client:
     
     def client_buy(self, car):
        self.user_car.append(car)
-       print(f'The user has bought the car')
+       print(f'The user has bought     the car')
         
 class Dealership:
     def __init__(self):
@@ -52,9 +52,9 @@ class Dealership:
     
     def buy_cars(self, car):
         if car in self.cars:
-            print(f'This car {car.brand} is already added')
-        else: 
-            self.cars.append(car.brand)
+            print(f'This car {car} is already added')
+        else:   
+            self.cars.append(car)
             print(f'This car is added to the dealership')
             print(f'The list of cars {self.cars}')
     def sell_cars(self, car, client):
