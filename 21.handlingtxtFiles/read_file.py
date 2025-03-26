@@ -39,3 +39,12 @@ with open('tale.txt', 'r' ) as file:
     print(f'The total lines in the file tale.txt are {len(content)}')
 
 '''
+
+##CHALLANGE DIFFICULT
+
+with open('tale.txt', 'r') as file:
+        ## Here we have to read it obligated
+        content = file.read()
+        ##using split
+        content_n = content.split('\n')
+        print(f'The total lines in this file are {len(content_n)} lines')
