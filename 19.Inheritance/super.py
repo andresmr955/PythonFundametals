@@ -20,3 +20,29 @@ class Student(Person):
 student = Student("Ana", 20, "S123")
 student.greet()
 '''
+
+#### Super level by level
+
+class LivingBeen:
+    def __init__(self, name):
+        self.name = name
+    
+class Person(LivingBeen):
+    def __init__(self, name, age):
+        super().__init__(name)
+        self.age = age
+
+    def greet(self):
+        print(f"Helo, everybody! My name is {self.name}")
+
+class Student(Person):
+    def __init__(self, name, age, id):
+        super().__init__(name, age)
+        self.id = id
+
+    def greet_student(self):
+        super().greet()
+        print(f"My id is {self.id}")
+        
+student = Student("Andres", 26, 6454)
+student.greet()
