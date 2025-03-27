@@ -1,0 +1,24 @@
+quantity,quality,price,category,brand,entry_date,name
+4,,1200,Electronics,BrandName,2024-01-05,Laptop
+120,,45,Accessories,TechGear,2024-02-10,Mouse
+60,,70,Accessories,KeyMasters,2024-02-12,Keyboard
+15,,320,Electronics,ViewSharp,2024-03-01,Monitor
+25,,150,Audio,SoundMax,2024-03-15,Headphones
+40,,85,Electronics,ClearView,2024-03-20,Webcam
+10,,200,Office,PrintWell,2024-04-01,Printer
+30,,400,Electronics,TabZone,2024-04-05,Tablet
+20,,800,Electronics,PhonePro,2024-04-10,Smartphone
+50,,100,Storage,StoreMore,2024-05-01,External Hard Drive
+35,,90,Audio,SoundMax,2024-05-05,Speaker
+18,,110,Audio,VoiceClear,2024-05-10,Microphone
+150,,25,Accessories,PowerPlus,2024-05-15,Charger
+200,,10,Accessories,CableWorld,2024-05-20,USB Cable
+80,,60,Accessories,ChargeIt,2024-05-25,Power Bank
+25,,150,Networking,NetSpeed,2024-06-01,Router
+100,,20,Accessories,ComfortZone,2024-06-05,Mouse Pad
+45,,55,Accessories,ErgoLift,2024-06-10,Laptop Stand
+8,,550,Electronics,ProView,2024-06-15,Projector
+12,,250,Electronics,ArtMaster,2024-06-20,Graphics Tablet
+100,,75,Accessories,ChargerMaster,2024-07-01,Wireless Charger
+100,,45,Accessories,ChargerMaster,2024-07-01,Wireless charger
+,200,456,Accessories premium,ChargerMasterClass,2024-07-01,Wireless charger JBL
