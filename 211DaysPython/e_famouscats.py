@@ -13,21 +13,33 @@ my_dict = [
   }
 ]
 
-list_solution = []
-max = 0
-sum_followers = 0   
-for i in range(len(my_dict[0]) + 1):
-    print(my_dict[i]["followers"])
-           
-    for j in my_dict[i]["followers"]:
-        sum_followers+= j
+def find_famous_cat(cats):
+    list_solution = []
+    max_seguidores = -1
+    cont_followers = 0 
 
-    print(sum_followers)
-    sum_followers = 0
+    #This is going to  to print every cat 
+    for cat in cats:
+      #  print(len(cat["followers"]))
+        contador = 0
+        cont_followers = 0
+        while contador <= len(cat["followers"]):
+              for follow in cat["followers"]:
+                  cont_followers+= follow
+                  contador+= 1
+            # print(cont_followers)
 
+              if cont_followers == max_seguidores:
+                  list_solution.append(cat["name"])
 
-print(list_solution)
+              elif cont_followers > max_seguidores:
+                  max_seguidores = cont_followers
+                  list_solution.clear()
+                  list_solution.append(cat["name"]) 
 
-
-
-list_solutionx = [for i in my_dict[j] for j in my_dict[] ]
+            # print(max_seguidores)
+              break
+        
+    return print(list_solution)   
+            
+find_famous_cat(my_dict)
