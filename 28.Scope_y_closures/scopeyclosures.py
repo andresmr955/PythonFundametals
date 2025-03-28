@@ -4,4 +4,10 @@ def local_function():
 
 local_function()    
 
-print(x)
+##print(x) Dont print cause is local
+
+x = 100
+
+def show_global():
+    print(f'The value of a global variable is {x}')
+show_global()    
