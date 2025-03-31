@@ -30,3 +30,5 @@ print(set_countries)
 set_countries.discard('ar')
 print(set_countries)
 
+set_countries.add("Brazil")
+
