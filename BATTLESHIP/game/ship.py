@@ -5,21 +5,52 @@ class Ship:
         self.positions = []
         self.hits = 0
 
-    def place_ship(self, board, start_row, start_col, direction):
+    def place_ship(self, board):
         self.board = board
-        self.start_row = start_row
-        self.start_col = start_col
-        self.direction = direction
-
+        self.start_row = int(input("Ingresa la fila inicial: =>"))
+        self.start_col = int(input("Ingresa la columna inicial: =>"))
+        self.direction = input("Direction del varco: (H): Horinzontal o (V): Vertical: ")
+        print(f'{self.start_row}, {self.start_col}, {self.direction.upper()}')
+        
+        if self.direction.upper() == "H":
             
-        board[2][1] =  "S"     ''' start_row '''
-        board[2][2] =  "S"  
-        board[2][3] =  "S"   ''' start_col '''
-        direction = "right"
+            if self.start_col + self.size <= len(self.board[0]):
+                
+                can_place = True
 
+                for i in range(self.size):
+                    if self.board[self.start_row][self.start_col + i ] != " ":
+                        print("You can not put your ship here")
+                        can_place = False
+                        break
+                if can_place:
+                        for i in range(self.size):
+                            self.board[self.start_row][self.start_col + i ] = "S"
+                            self.positions.append((self.start_row, self.start_col  + i))
+                        print(f'The ships position is from ({self.start_row}, {self.start_col}) to ({self.start_row}, {self.start_col + self.size - 1}) )')
+            else: 
+                print("The ship's size is not good")
+          
 
-ship1 = Ship("El destructor", 2)
-
+        elif self.direction.upper() == "V": 
+            if  self.start_row + self.size <= len(self.board):
+                can_place = True
+                for i in range(self.size):
+                    if self.board[self.start_row + i][self.start_col] != " ":
+                        print("You can not put your ship here")
+                        can_place = False
+                        break
+                if can_place:
+                        for i in range(self.size):
+                            self.board[self.start_row + i][self.start_col] = "S"
+                            self.positions.append((self.start_row + i, self.start_col))
+                            print(f'The ships position is ({self.start_row}, {self.start_col})')
+            else: 
+                print("The ship's size is not good")
+        else:
+            print("The customer does not want Horizontal")  
+        
+              
 
 '''
 board = [
@@ -36,34 +67,13 @@ board = [
 '''
 
 
-board = [
-#       1      2     3     4    5
-    [" " , " " , " " , " ", " "],
-    [" " , " " , " " , " ", " "],
-    [" " , " " , " " , " ", " "],
-    [" " , " " , " " , " ", " "],
-    [" " , " " , " " , " ", " "],
-    [" " , " " , " " , " ", " "],
-    [" " , " " , " " , " ", " "],
-    [" " , " " , " " , " ", " "]
-]
+board = [[ " " for _ in range(5) ] for _ in range(8) ]
+
+ship1 = Ship("El destructor", 3)
+ship1.place_ship(board)
 
 
-#Estos estan en la columna 2 en la posicion a, b y c      
-board[0][1] = 'S' 
-board[1][1] = 'S'
-board[2][1] = 'S'
-
-
-for i in range(len(board)):
-    for j in range(len(board[i])):
-        print(board[i][j], end=" ")
-        if board[i][j] == ' ':
-             board[i][j] == 'S'
-    print()	
-
-
-#for fila in board:
-   # print(fila)
+for fila in board:
+    print(" | " .join(fila))
 
     
