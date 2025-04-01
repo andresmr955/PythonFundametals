@@ -56,4 +56,4 @@ print(f'This is using .symmetric_difference() and the result is {result}')
 numeros = {8, 3, 1, 6, 2, 5}
 ###order a dictionary
 solution = sorted(numeros)
-print(f'Here we are transforming a set in an order list {solution}')
+#print(f'Here we are transforming a set in an order list {solution}')
