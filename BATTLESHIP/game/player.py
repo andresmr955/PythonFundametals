@@ -12,18 +12,21 @@ class Player:
         submarine = Submarine()
         battleship = Battleship()
 
-        destroyer.place_ship(self.board, start_row= int(input("Ingresa la fila inicial del destroyer: =>")), 
+        while not destroyer.place_ship(self.board, start_row= int(input("Ingresa la fila inicial del destroyer: =>")), 
                                 start_col= int(input("Ingresa la columna inicial del destroyer: =>")), 
-                                direction= input("Direction del destroyer: (H): Horinzontal o (V): Vertical: "))
-        
-        submarine.place_ship(self.board, start_row= int(input("Ingresa la fila inicial del submarino: =>")), 
+                                direction= input("Direction del destroyer: (H): Horinzontal o (V): Vertical: ")):
+            
+            print("Try again for the Destroyer.")
+        while not submarine.place_ship(self.board, start_row= int(input("Ingresa la fila inicial del submarino: =>")), 
                              start_col= int(input("Ingresa la columna inicial del submarino: =>")), 
-                             direction= input("Direction del submarino: (H): Horinzontal o (V): Vertical: "))
-        
-        battleship.place_ship(self.board, start_row= int(input("Ingresa la fila inicial del battleship: =>")), 
+                             direction= input("Direction del submarino: (H): Horinzontal o (V): Vertical: ")):
+            
+            print("Try again for the submarine.")
+
+        while not battleship.place_ship(self.board, start_row= int(input("Ingresa la fila inicial del battleship: =>")), 
                               start_col= int(input("Ingresa la columna inicial del battleship: =>")), 
-                              direction= input("Direction del battleship: (H): Horinzontal o (V): Vertical: "))
-        
+                              direction= input("Direction del battleship: (H): Horinzontal o (V): Vertical: ")):
+            print("Try again for the battleship.")
 
 
     def print_board(self):
