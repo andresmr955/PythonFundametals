@@ -15,3 +15,10 @@ names_with_more_five = filter(lambda a: len(a) >= 5 ,names)
 upper_names = list(map(lambda b: b.upper(), names_with_more_five))
 
 print(upper_names)
+
+names = {'Nicolas', 'Miguel', 'Juan', 'Nicolas'} 
+print(names) 
+
+a = {1,2}
+b = {2,3}
+print(a - b)
