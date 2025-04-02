@@ -15,7 +15,6 @@ class Ship:
         print(f'{self.start_row}, {self.start_col}, {self.direction.upper()}')
         
         if self.direction.upper() == "H":
-            
             if self.start_col + self.size <= len(board[0]):
                 
                 can_place = True
@@ -39,7 +38,7 @@ class Ship:
           
 
         elif self.direction.upper() == "V": 
-            if  self.start_row + self.size <= len(board):
+            if self.start_row + self.size <= len(board):
                 can_place = True
                 for i in range(self.size):
                     if board[self.start_row + i][self.start_col] != " ":
@@ -51,6 +50,7 @@ class Ship:
                             board[self.start_row + i][self.start_col] = self.name
                             self.positions.append((self.start_row + i, self.start_col))
                         print(f'The ships position is ({self.start_row}, {self.start_col}) to ({self.start_row + self.size -1}, {self.start_col})')
+                        return True
             else: 
                 print("The ship's size does not fit, please enter a correct size")
                 sys.exit()
