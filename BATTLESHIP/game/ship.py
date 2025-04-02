@@ -95,7 +95,7 @@ board = [
    H   [" " , " " , " " , " ", " "]
 ]
 '''
-
+##change hot fix
 
 board = [[ " " for _ in range(5) ] for _ in range(8) ]
 
