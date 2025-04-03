@@ -30,3 +30,4 @@ teams_win = list(filter(lambda x: x['home_team_result'] == 'Win' , matches))
 print(teams_win)
 
 print(matches)
+print(len(teams_win))
