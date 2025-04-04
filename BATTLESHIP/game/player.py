@@ -5,7 +5,7 @@ class Player:
     def __init__(self, name):
         self.name = name
         self.board = [[" " for _ in range(10)] for _ in range(10)]
-
+        self.ships = []
 
     def place_ships(self):
         destroyer = Destroyer()
@@ -32,6 +32,8 @@ class Player:
     def print_board(self):
         for fila in self.board:
             print(" | " .join(fila))
+
+            
 
 player = Player("Andres")
 print('*' * 40)

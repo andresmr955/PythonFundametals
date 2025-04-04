@@ -26,13 +26,12 @@ class Ship:
                         break
                 if can_place:
                         for i in range(self.size):
-                            board[self.start_row][self.start_col + i ] = self.name
+                            board[self.start_row][self.start_col + i ] = self.name[0]
                             self.positions.append((self.start_row, self.start_col  + i))
                         print(f'The ships position is from ({self.start_row}, {self.start_col}) to ({self.start_row}, {self.start_col + self.size - 1})')
                         return True
             else: 
                 print("The ship's size does not fit, please enter a correct size")
-                sys.exit()
                 return False 
                 
           
@@ -47,7 +46,7 @@ class Ship:
                         break
                 if can_place:
                         for i in range(self.size):
-                            board[self.start_row + i][self.start_col] = self.name
+                            board[self.start_row + i][self.start_col] = self.name[0]
                             self.positions.append((self.start_row + i, self.start_col))
                         print(f'The ships position is ({self.start_row}, {self.start_col}) to ({self.start_row + self.size -1}, {self.start_col})')
                         return True
