@@ -26,6 +26,8 @@ def read_population(path):
             iterable = zip(header, row)
             country_dict = {key:value for key, value in iterable}
             data.append(country_dict)
-            print(data)
+        return data
+        
 if __name__ == '__main__':            
-    read_population('./world_population.csv')
+    data =  read_population('./world_population.csv')
+    print(data[45])

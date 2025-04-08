@@ -12,23 +12,25 @@ class Player:
         submarine = Submarine()
         battleship = Battleship()
 
-        while not destroyer.place_ship(self.board, start_row= int(input("Ingresa la fila inicial del destroyer: =>")), 
-                                start_col= int(input("Ingresa la columna inicial del destroyer: =>")), 
-                                direction= input("Direction del destroyer: (H): Horinzontal o (V): Vertical: ")):
-            
+        
+
+    
+        while not destroyer.place_ship(self.board, start_row= int(input("Enter the initial row of the destroyer: =>")), 
+                            start_col = int(input("Enter the initial column of the destroyer: =>")), 
+                            direction = input("Direction of the destroyer: (H): Horizontal or (V): Vertical:")):     
             print("Try again for the Destroyer.")
-        while not submarine.place_ship(self.board, start_row= int(input("Ingresa la fila inicial del submarino: =>")), 
-                             start_col= int(input("Ingresa la columna inicial del submarino: =>")), 
-                             direction= input("Direction del submarino: (H): Horinzontal o (V): Vertical: ")):
+            
+        while not submarine.place_ship(self.board, start_row= int(input("Enter the initial row of the submarine: =>")), 
+                            start_col = int(input("Enter the initial column of the submarine: =>")), 
+                            direction = input("Submarine direction: (H): Horizontal or (V): Vertical: ")):
             
             print("Try again for the submarine.")
 
-        while not battleship.place_ship(self.board, start_row= int(input("Ingresa la fila inicial del battleship: =>")), 
-                              start_col= int(input("Ingresa la columna inicial del battleship: =>")), 
-                              direction= input("Direction del battleship: (H): Horinzontal o (V): Vertical: ")):
+        while not battleship.place_ship(self.board, start_row= int(input("Enter the starting row of the battleship: =>")), 
+                            start_col = int(input("Enter the initial column of the battleship: =>")), 
+                            direction = input("Direction of the battleship: (H): Horizontal or (V): Vertical: ")):
             print("Try again for the battleship.")
-
-
+        
     def print_board(self):
         for fila in self.board:
             print(" | " .join(fila))
