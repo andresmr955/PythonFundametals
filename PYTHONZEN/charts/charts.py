@@ -8,7 +8,7 @@ def generate_bar_chart(labels, values):
     plt.show()
 
 
-def generate_bar_chart(labels, values):
+def generate_pie(labels, values):
     
 
     fig, ax = plt.subplots()
