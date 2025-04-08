@@ -12,7 +12,7 @@ def read_csv(path, country_user):
             if country_user == row['Country/Territory']:
                 #'country': row['Country/Territory'],
                 print(f'Your country is {country_user}')
-                # Lista de claves y valores
+                # list with keys an value
                 labels = ['2022 Population', '2020 Population', '2015 Population', '2010 Population', '2000 Population', '1990 Population', '1980 Population', '1970 Population']
                 values = [int(row[label]) for label in labels]
 
@@ -25,12 +25,12 @@ def read_csv(path, country_user):
                 generate_bar_chart(labels, values)
                 
 def generate_bar_chart(labels, values):
-    #create the figure and eje
+    #create the figure and axis
     fig, ax = plt.subplots()
-    #create graphic and barras
+    #create graphic and bars
     ax.bar(labels, values)
 
-    # Rotar las etiquetas del eje X para mejorar la legibilidad
+     # Rotate the X-axis labels to improve readability.
     plt.xticks(rotation=45, ha='right')
 
     plt.show()
