@@ -201,3 +201,6 @@ class Timer:
              
 my_tempo = Timer(0, 0, 10)
 my_tempo.conver_to_sec()
+
+##LEVEL 3
+
