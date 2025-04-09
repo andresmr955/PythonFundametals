@@ -9,17 +9,33 @@ person = Persona("Andres", 26)
 person.greet()
 
 class Rectangle():
-    def __init__(self, weight, hight):
-        self.weight = weight
-        self.hight = hight
+    def __init__(self, width, height):
+        self.width = width
+        self.height = height
     
     def calculate_area(self):
-        return self.weight * self.hight
+        return self.width * self.height
     
     def perimeter(self):
-        total = 2 * (self.weight + self.hight)
+        total = 2 * (self.width + self.height)
         return total
     
 rectangle = Rectangle(20, 10)
 print(rectangle.perimeter())
 print(rectangle.calculate_area())
+
+class Car:
+    def __init__(self, brand, model, speed):
+        self.brand = brand
+        self.model = model
+        self.speed = speed
+    
+    def speed_up(self):
+        print("Car is speeding up")
+
+    def stop_car(self):
+        print("Car is stopping")
+
+my_car = Car("Toyota", 2026, 200)
+my_car.speed_up()
+my_car.stop_car()
