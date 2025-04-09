@@ -39,3 +39,14 @@ class Car:
 my_car = Car("Toyota", 2026, 200)
 my_car.speed_up()
 my_car.stop_car()
+
+class Animal():
+    def __init__(self, name, specie ):
+        self.name = name 
+        self.specie = specie
+
+    def sound(self):
+        print("Animal sound")
+
+my_animal = Animal("Dog", "mammal")
+my_animal.sound()
