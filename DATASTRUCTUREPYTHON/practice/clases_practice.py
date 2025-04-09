@@ -78,3 +78,23 @@ my_account.deposit(200)
 my_account.show_balance()
 my_account.withdraw(400)
 my_account.show_balance()        
+
+## LEVEL 2
+
+class Student:
+    def __init__(self, name):
+        self.name = name
+        self.grades = []
+
+    def calculate_average(self):
+        if len(self.grades) > 0:
+            sum_total = sum(self.grades)
+            average_total = sum_total / len(self.grades)
+            print(f'The average grade of {self.name} is {average_total}')
+        else:
+            print("No grades available to calculate the average")
+
+my_student = Student("Andres David")
+my_student.grades = [40, 30, 60, 80, 90]
+print(my_student.grades)
+my_student.calculate_average()
