@@ -119,3 +119,85 @@ my_book = Book("The little prince", "Andres")
 my_book.mark_read()
 
 
+class Task:
+    def __init__(self, description):
+        self.description = description
+        self.completed = False
+
+    def complete_task(self):
+        self.completed = True
+    
+    def show_status(self):
+        if self.completed:
+            print(f'The task status is {self.completed}, completed')
+        else: 
+            print(f'The task status is not completed')
+
+my_task = Task("Finish 20 classes")
+my_task.complete_task()
+my_task.show_status()
+
+
+class Product():
+    def __init__(self, name, price):
+        self.name = name
+        self.price = price
+        self.stock = {}
+
+    def sell_units(self, item, quantity):
+        if item not in self.stock:
+            print(f'Item {item} is not in stock')
+            return 
+        
+        if quantity <=  0:
+            print("It is not possible to sell something less or equal to 0")   
+
+        if quantity <= self.stock[item]:
+            self.stock[item] -= quantity
+            print(f'Sold {quantity} units of {item}. Remaining stock: {self.stock[item]}')
+               
+            if self.stock[item] == 0:
+                del self.stock[item] 
+                print(f'Updated stock {self.stock}')
+        else: 
+            print(f"Not enough stock to sell {quantity} units of {item}.")
+            
+
+
+    def add_stock(self, item_name, item):
+        self.stock[item_name] = item
+        print(self.stock)
+my_product = Product("Fruits", 5)
+my_product.add_stock("orange", 3)
+my_product.add_stock("grapes", 6)
+my_product.sell_units("orange", 1)
+my_product.sell_units("orange", 1)
+my_product.sell_units("orange", 1)
+my_product.sell_units("grapes", 1)
+
+import time
+class Timer:
+    def __init__(self, hours = 0, minutes = 0, seconds = 0):
+        self.hours = hours
+        self.minutes = minutes
+        self.seconds = seconds
+
+    def conver_to_sec(self):
+        
+        while self.hours > 0 or self.minutes > 0 or self.seconds > 0:
+            print(f'{self.hours: 02}:{self.minutes: 02}:{self.seconds: 02}', end="\r")
+            time.sleep(1)
+            self.decrement()
+
+        print("The timer has finished")   
+    
+    def decrement(self):
+        if self.hours > 0:
+            self.hours -= 1
+        elif self.minutes > 0:
+            self.minutes -= 1
+        elif self.seconds > 0:
+            self.seconds -= 1
+             
+my_tempo = Timer(0, 0, 10)
+my_tempo.conver_to_sec()
