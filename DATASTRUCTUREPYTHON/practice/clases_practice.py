@@ -50,3 +50,31 @@ class Animal():
 
 my_animal = Animal("Dog", "mammal")
 my_animal.sound()
+
+class BankAccount():
+    def __init__(self, titular, amount):
+        self.titular = titular
+        self.amount = amount
+
+    def deposit(self, amount_inserted):
+        print(f'You are depositing {amount_inserted}')
+        self.amount += amount_inserted
+        print(f'new amount {self.amount}')
+    
+    def withdraw(self, amount_withdraw):
+        if amount_withdraw <= 0:
+            print("Withdrawal amount must be positive!")
+        elif amount_withdraw > self.amount:
+            print(f"Insufficient funds! You tried to withdraw {amount_withdraw}, but your balance is {self.amount}.")
+        else:
+            print(f'You are withdrawing {amount_withdraw}')
+            self.amount -= amount_withdraw
+
+    def show_balance(self):
+        print(f'Your balance is {self.amount}')
+
+my_account = BankAccount("Andres", 500)
+my_account.deposit(200)
+my_account.show_balance()
+my_account.withdraw(400)
+my_account.show_balance()        
