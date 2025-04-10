@@ -6,10 +6,10 @@ class Grid():
         for row in range(rows):
             self.data[row] = Array(columns, fill_value)
     
-    def get_height(self):
+    def __get_height__(self):
         return len(self.data)
     
-    def get_weight(self):
+    def __get_width__(self):
         return len(self.data[0])
     
     def __getitem__(self, index):
@@ -17,8 +17,8 @@ class Grid():
     
     def __str__(self):
         result = ""
-        for row in range(self.get_height()):
-            for col in range(self.get_weight()):
+        for row in range(self.__get_height__()):
+            for col in range(self.__get_width__()):
                 result += str(self.data[row][col]) + " "
 
             result += "\n"
@@ -28,15 +28,15 @@ class Grid():
 matrix = Grid(3,3)
 #print(matrix)
 
-for row in range(matrix.get_height()):
-    for column in range(matrix.get_weight()):
+for row in range(matrix.__get_height__()):
+    for column in range(matrix.__get_width__()):
         matrix[row][column] = row * column
 
 print(matrix)
 
 
-print("height:", matrix.get_height())
-print("weight:", matrix.get_weight())
+print("height:", matrix.__get_height__())
+print("weight:", matrix.__get_width__())
 print("Item 1 complete:", matrix.__getitem__(1))
 print("Item 1, element 0:", matrix.__getitem__(1)[0])
 print("Item 1, element 1:", matrix.__getitem__(1)[1])
