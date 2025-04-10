@@ -9,11 +9,16 @@ class Grid():
     def __get_height__(self):
         return len(self.data)
     
+    def __len__(self):
+        return len(self.data)
+    
     def __get_width__(self):
         return len(self.data[0])
     
     def __getitem__(self, index):
         return self.data[index]
+    
+    
     
     def __str__(self):
         result = ""
@@ -32,6 +37,7 @@ for row in range(matrix.__get_height__()):
     for column in range(matrix.__get_width__()):
         matrix[row][column] = row * column
 
+''''
 print(matrix)
 
 
@@ -41,3 +47,5 @@ print("Item 1 complete:", matrix.__getitem__(1))
 print("Item 1, element 0:", matrix.__getitem__(1)[0])
 print("Item 1, element 1:", matrix.__getitem__(1)[1])
 print("Representation in string:", matrix.__str__())
+
+'''
