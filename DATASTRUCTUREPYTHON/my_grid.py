@@ -7,6 +7,9 @@ class Grid():
         for row in range(rows):
             self.data[row] = Array(columns, fill_value)
 
+    def __len__(self):
+        return len(self.data)  # Devuelve la longitud de la lista principal (número de filas)
+
     def get_height(self):
          return len(self.data)
 
@@ -16,6 +19,10 @@ class Grid():
     def __getitem__(self, index):
         return self.data[index]
     
+    def __iter__(self):
+        for row in self.data:
+            yield row
+
     def fill_random(self, lower, upper):
         result = 0
         for row in range(self.get_height()):
@@ -41,4 +48,4 @@ matrix = Grid(3,3)
 matrix = Grid(3, 3)
 matrix.fill_random(0, 100)
 
-print(matrix)
+#print(matrix)
