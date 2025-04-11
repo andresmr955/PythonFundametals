@@ -1,4 +1,5 @@
-from array_02 import Array
+from array_02 import Array ##Change the name when you want to deploy
+
 from grid_03 import Grid
 
 class Cube():
