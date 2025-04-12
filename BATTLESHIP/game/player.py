@@ -6,6 +6,7 @@ class Player:
         self.name = name
         self.board = [[" " for _ in range(10)] for _ in range(10)]
         self.ships = []
+        self.attack_board = [[" " for _ in range(10)] for _ in range(10)]
 
     def place_ships(self):
         destroyer = Destroyer()
@@ -35,6 +36,8 @@ class Player:
         for fila in self.board:
             print(" | " .join(fila))
 
+    def attack(self):
+        pass
             
 
 player = Player("Andres")
