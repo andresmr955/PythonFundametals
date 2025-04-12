@@ -8,7 +8,20 @@ class Ship:
         self.hits = 0
 
     def place_ship(self, board, start_row, start_col, direction):
-        
+        '''
+        This function place the ship in a board and the user give us the args:
+
+        Args:
+            start_row, is the row and start_col is the column and direction Vertical or Horizontal
+
+        Condition: 
+            - The first condition confirm us if the direction is Horizontal 
+            - The second condition confirm if the column addition to the len size ship us les than the length board we can put the ship    
+
+        Loops:
+            - The first loop check if the spaces are empty if not print a message
+            - The second loop that helps to put the ship if it is empty
+        '''
         self.start_row = start_row
         self.start_col = start_col
         self.direction = direction
@@ -64,16 +77,16 @@ class Ship:
 
 class Destroyer(Ship): 
     def __init__(self):
-        ##We have to call the constructor of parent class
-        super().__init__("D", 2)
+        ##We have to call the constructor of parent class with super and we add the parameters
+        super().__init__("Destroyer", 2)
 
 class Submarine(Ship):
     def __init__(self):
-        super().__init__("S", 3)
+        super().__init__("Submarine", 3)
                 
 class Battleship(Ship):
     def __init__(self):
-        super().__init__("B", 4)
+        super().__init__("Battleship", 4)
 
 
 
