@@ -13,6 +13,7 @@ node_2 = Node("A", None)
 #This node has value and its pointer is node_2
 node_3 = Node("B", node_2)
 
+'''
 #Here we print the node_2 but it shows its location 
 print(f'we print the node_2 but it shows its location =>{node_2}')
 #Here we print the value of node_2 is A
@@ -26,11 +27,12 @@ node_1 = Node("C", node_3)
 #Here we print the next data value that is node_3 B
 print(f'We print the next data value of node_1 after be changed {node_1.next.data} \n \n')
 
+'''
 
 head = None
 for count in range(1, 5):
     head = Node(count, head)
-
+    head = head.next
 
 
 
