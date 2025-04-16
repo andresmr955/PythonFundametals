@@ -64,6 +64,10 @@ class Ship:
             print("Invalid direction, please use (H) or (V)") 
             return False 
         
+    def is_hit(self, row, col):
+        # Check if the attack hits this ship
+        return (row, col) in self.positions
+       
     def hit(self):
         self.hits += 1
 
