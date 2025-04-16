@@ -50,6 +50,32 @@ class MySingleLinkedList{
         return this;
     }
 
+    delete(index){
+        if(index >= this.length || index < 0){
+            console.log(`Cannot delete index ${index}, it does not exist`);
+            return;
+        }
+        
+        if(index===0){
+            this.head = this.head.next;
+            this.length--;
+            return this
+        }
+
+        const holdingPointer = this.getTheIndex(index - 1)
+
+        const deleteNode = holdingPointer.next
+        
+        holdingPointer.next = deleteNode.next
+
+        if(index === this.length - 1){
+            this.tail = holdingPointer;
+        }
+    
+        this.length--;
+
+    }
+
     getTheIndex(index){
         let counter = 0
         let currentNode = this.head;
@@ -71,3 +97,6 @@ myLinkedList.append(5)
 myLinkedList.prepend(6)
 myLinkedList.insert(3, 8)
 console.log(myLinkedList)
+myLinkedList.delete(4)
+console.log(myLinkedList)
+console.log(JSON.stringify(myLinkedList, null, 2))
