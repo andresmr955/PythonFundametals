@@ -38,21 +38,17 @@ class Player:
             print(" | " .join(fila))
 
     def attack(self, opponent):
-        board_impacts = []
-
-        while any(ship.hits != ship.size for ship in opponent.ships):
+                board_impacts = []
                 row_attack = int(input("Enter the row to attack: =>"))
                 col_attack = int(input("Enter the column to attack: =>"))
 
                 if row_attack < 0 or col_attack < 0 or row_attack >= len(self.attack_board) or col_attack >= len(self.attack_board[0]):
                     print("The position is not valid, less than 0 or out of bounds")
-                    continue
-
+                    return 
                 if self.attack_board[row_attack][col_attack] != " ":
                     print("You already attacked this position.")
-                    continue
-
-                if opponent.board[row_attack][col_attack] == "S" or opponent.board[row_attack][col_attack] == "D" or opponent.board[row_attack][col_attack] == "B" :
+                    return
+                if opponent.board[row_attack][col_attack] in ["S", "D", "B"]:
                     print("Hit!")
                     self.attack_board[row_attack][col_attack] = "I"
                     opponent.board[row_attack][col_attack] = "I"
@@ -79,9 +75,14 @@ class Player:
                 for row in self.attack_board:
                     print(" | ".join(row))
 
-        print("All enemy ships have been sunk!")
-                
+       
+
+    def all_ships_sunk(self, opponent):
         
+        while any(ship.hits != ship.size for ship in opponent.ships):
+            self.attack(opponent)        
+        print("All enemy ships have been sunk!")
+
 # Create player objects
 player = Player("Andres")
 print('*' * 40)
