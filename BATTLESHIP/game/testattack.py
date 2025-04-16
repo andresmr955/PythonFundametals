@@ -42,6 +42,7 @@ def attack():
     
         row_attack = int(input("Enter the row to attack: =>"))
         col_attack = int(input("Enter the column to attack: =>"))
+        
 
         if row_attack < 0 or col_attack < 0 or row_attack >= len(board_opponent) or col_attack >= len(board_opponent[0]):
             print("The position is not valid, less than 0")
