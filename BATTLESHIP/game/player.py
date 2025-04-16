@@ -80,9 +80,10 @@ class Player:
     def all_ships_sunk(self, opponent):
         
         while any(ship.hits != ship.size for ship in opponent.ships):
-            self.attack(opponent)        
-        print("All enemy ships have been sunk!")
+            self.attack(opponent) 
 
+        print("All enemy ships have been sunk!")
+        return True
 # Create player objects
 player = Player("Andres")
 print('*' * 40)
