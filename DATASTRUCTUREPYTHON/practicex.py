@@ -1,10 +1,10 @@
 from node import Node
 
-class SingleLinkedList:
+class SingleLinkedList():
     def __init__(self):
         self.tail = None
         self.size = 0
-
+    
     def append(self, data):
         node = Node(data)
         
@@ -16,19 +16,20 @@ class SingleLinkedList:
                 current = current.next
             
             current.next = node
-            self.size += 1
+        
+        self.size += 1
 
     def size(self):
-        return str(self.size)
-    
-    def iter(self):
+        return str(self.size)   
 
+    def iter(self):
         current = self.tail
+
         while current:
             value = current.data
-            current = current.next 
+            current = current.next
             yield value
-
+    
     def delete(self, data):
         current = self.tail
         previous = self.tail
@@ -51,18 +52,38 @@ class SingleLinkedList:
         while current:
             elements.append(current.data)
             current = current.next
-        print(" -> ".join(elements), type(elements))       
+        
+        print(" --> ".join(elements))
 
-myangielis = SingleLinkedList()
+    def search(self, data):
 
-myangielis.append("M")
-myangielis.append("E")
-myangielis.append("L")
-myangielis.append("O")
-myangielis.append("D")
-myangielis.append("I")
-myangielis.append("E")
-myangielis.print_list()
+        for node in self.iter():
+            if node == data:
+                print(f"We have found {data}")
+                return
+                
+        print(f"We have not found {data}")
+            
+    def clear(self):
 
-print(myangielis.delete("D"))
-myangielis.print_list()
+        self.tail = None
+        self.head = None
+        self.size = 0
+
+mylistmelodie = SingleLinkedList()
+mylistmelodie.append("M")
+mylistmelodie.append("E")
+mylistmelodie.append("L")
+mylistmelodie.append("O")
+mylistmelodie.append("D")
+mylistmelodie.append("I")
+mylistmelodie.append("E")
+mylistmelodie.print_list()
+mylistmelodie.search("M")
+mylistmelodie.delete("M")
+mylistmelodie.search("M")
+mylistmelodie.print_list()
+
+mylistmelodie.clear()
+print("moment to clear my linked list")
+mylistmelodie.print_list()
