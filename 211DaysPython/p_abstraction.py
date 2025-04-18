@@ -28,14 +28,8 @@ class Cart:
   
         
   def calculateTotal(self):
-    total_global = 0
-
-    for quantity in self.shopping:
-        total = quantity.quantity * quantity.price
-        total_global += total
-        total = 0
         
-    return total_global
+    return [sum(quantity.quantity * quantity.price for quantity in self.shopping)]
   
   def getProducts(self):
     return [item for item in self.shopping]
