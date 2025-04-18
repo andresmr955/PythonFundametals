@@ -21,11 +21,7 @@ class Cart:
     return product.addToCart()
   
   def deleteProduct(self, product):
-        for item in self.shopping:
-            if product.name == item.name:
-                self.shopping.remove(item) 
-                return self.shopping
-  
+        self.shopping = [item for item in self.shopping if item.name != product.name]
         
   def calculateTotal(self):
         
