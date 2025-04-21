@@ -1,5 +1,7 @@
 from node import Node
 
+from node import Node
+
 class SingleLinkedList():
     def __init__(self):
         self.tail = None
@@ -65,3 +67,41 @@ class SingleLinkedList():
         self.tail = None
         self.head = None
         self.size = 0
+
+
+    def delete_any(self, index):
+        
+        if index <= 0 or self.tail is None:
+            print("Index out of bounds or empty list.")
+            return
+
+        if index == 1:
+            removed_item = self.tail.data
+            self.tail = self.tail.next
+            print(f'Item removed: {removed_item}')
+            return
+
+        probe = self.tail
+        current_index = 1
+
+        while probe.next and current_index < index - 1:
+            probe = probe.next
+            current_index += 1
+
+        if probe.next is None:
+            print("Index out of bounds.")
+            return
+
+        removed_item = probe.next.data
+        probe.next = probe.next.next
+        print(f'Item removed: {removed_item}')
+
+
+mylinkedlist = SingleLinkedList()
+mylinkedlist.append("A")
+mylinkedlist.append("B")
+mylinkedlist.append("C")
+mylinkedlist.append("D")
+
+mylinkedlist.print_list()
+mylinkedlist.delete_end(1)
