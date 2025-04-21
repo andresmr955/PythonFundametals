@@ -66,22 +66,22 @@ class SingleLinkedList():
         self.head = None
         self.size = 0
 
-mylistmelodie = SingleLinkedList()
-mylistmelodie.append("M")
-mylistmelodie.append("E")
-mylistmelodie.append("L")
-mylistmelodie.append("O")
-mylistmelodie.append("D")
-mylistmelodie.append("I")
-mylistmelodie.append("E")
-mylistmelodie.print_list()
+# mylistmelodie = SingleLinkedList()
+# mylistmelodie.append("M")
+# mylistmelodie.append("E")
+# mylistmelodie.append("L")
+# mylistmelodie.append("O")
+# mylistmelodie.append("D")
+# mylistmelodie.append("I")
+# mylistmelodie.append("E")
+# mylistmelodie.print_list()
 
 
-mylistmelodie.search("M")
-mylistmelodie.delete("M")
-mylistmelodie.search("M")
-mylistmelodie.print_list()
+# mylistmelodie.search("M")
+# mylistmelodie.delete("M")
+# mylistmelodie.search("M")
+# mylistmelodie.print_list()
 
-mylistmelodie.clear()
-print("moment to clear my linked list")
-mylistmelodie.print_list()
+# mylistmelodie.clear()
+# print("moment to clear my linked list")
+# mylistmelodie.print_list()
