@@ -1,4 +1,4 @@
-from practicex import SingleLinkedList
+from practice.practicex import SingleLinkedList
 
 class Array:
     def __init__(self, size, data=None):
