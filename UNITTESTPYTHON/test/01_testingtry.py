@@ -4,6 +4,7 @@ def calulate_total(products):
         total += product["price"] 
     return total
 
+
 def test_calculate_total_with_empty_list():
     print("Prueba")
     assert calulate_total([]) == 0
