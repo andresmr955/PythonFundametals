@@ -9,30 +9,15 @@ class Player:
         self.attack_board = [[" " for _ in range(10)] for _ in range(10)]
 
     def place_ships(self):
-        destroyer = Destroyer()
-        submarine = Submarine()
-        battleship = Battleship()
+        ships_to_place = [("Destroyer", Destroyer()), ("Submarine", Submarine()), ("Battleship", Battleship())]
 
-    
-        while not destroyer.place_ship(self.board, start_row= int(input("Enter the initial row of the destroyer: =>")), 
-                            start_col = int(input("Enter the initial column of the destroyer: =>")), 
-                            direction = input("Direction of the destroyer: (H): Horizontal or (V): Vertical:")):     
-            print("Try again for the Destroyer.")
-        self.ships.append(destroyer)
+        for name, ship in ships_to_place:
+            while not ship.place_ship(self.board, start_row= int(input(f"Enter the initial row of the {name}: =>")), 
+                                start_col = int(input(f"Enter the initial column of the {name}: =>")), 
+                                direction = input(f"Direction of the {name}: (H): Horizontal or (V): Vertical:")):     
+                print("Try again for the Destroyer.")
+            self.ships.append(ship)
             
-        while not submarine.place_ship(self.board, start_row= int(input("Enter the initial row of the submarine: =>")), 
-                            start_col = int(input("Enter the initial column of the submarine: =>")), 
-                            direction = input("Submarine direction: (H): Horizontal or (V): Vertical: ")):
-            
-            print("Try again for the submarine.")
-        self.ships.append(submarine)
-
-        while not battleship.place_ship(self.board, start_row= int(input("Enter the starting row of the battleship: =>")), 
-                            start_col = int(input("Enter the initial column of the battleship: =>")), 
-                            direction = input("Direction of the battleship: (H): Horizontal or (V): Vertical: ")):
-            print("Try again for the battleship.")
-        self.ships.append(battleship)
-        
     def print_board(self):
         for fila in self.board:
             print(" | " .join(fila))
