@@ -62,39 +62,57 @@ class Player:
 
        
 
-    def all_ships_sunk(self, opponent):
+    def all_ships_sunk(self):
         
-        while any(ship.hits != ship.size for ship in opponent.ships):
-            self.attack(opponent) 
+        """
+    Continuously attacks the opponent until all of their ships are sunk.
 
-        print("All enemy ships have been sunk!")
+    This function loops and performs attacks on the opponent by calling 
+    `self.attack(opponent)` as long as there is at least one ship that 
+    has not been fully hit (i.e., `ship.hits` is not equal to `ship.size`). 
+    Once all ships are sunk, it prints a victory message.
+
+    Parameters:
+    opponent (Player): The opponent player object, expected to have a list of ships (`ships`),
+                       each with `hits` and `size` attributes.
+
+    Returns:
+    None
+    """
+        
+        while any(ship.hits != ship.size for ship in self.ships):
+            return False
+
+        
         return True
-# Create player objects
-player = Player("Andres")
-print('*' * 40)
-print("Welcome to Battle Ship")
-print(f"The player's name is {player.name}")
-print('*' * 40)
+    
+    
+# # Create player objects
+# player = Player("Andres")
+# print('*' * 40)
+# print("Welcome to Battle Ship")
+# print(f"The player's name is {player.name}")
+# print('*' * 40)
 
-player.place_ships()
+# player.place_ships()
 
-print('*' * 40)
-print("After placing ships:")
-player.print_board()
+# print('*' * 40)
+# print("After placing ships:")
+# player.print_board()
 
-# Let's say there's an opponent player
-opponent = Player("Opponent")
-print('*' * 40)
-print("Welcome to Battle Ship")
-print(f"The second player's name is {opponent.name}")
-opponent.place_ships()
+# # Let's say there's an opponent player
+# opponent = Player("Opponent")
+# print('*' * 40)
+# print("Welcome to Battle Ship")
+# print(f"The second player's name is {opponent.name}")
+# opponent.place_ships()
 
-print('*' * 40)
-print("After opponent placing ships:")
-opponent.print_board()
+# print('*' * 40)
+# print("After opponent placing ships:")
+# opponent.print_board()
 
-# Start attacking phase
-print("Starts attacking player")
-player.attack(opponent)
-print("now attacking player")
-opponent.attack(player)
+# # Start attacking phase
+# print("Starts attacking player")
+# player.attack(opponent)
+# print("now attacking player")
+# opponent.attack(player)
