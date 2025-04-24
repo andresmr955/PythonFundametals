@@ -42,7 +42,7 @@ class BankAccountTest(unittest.TestCase):
         self.assertEqual(self.account_two.balance, 2500)
     
     def test_transfer_account_error(self):
-         with self.assertRaises(ValueError, msg="It should be a value error"):
+        with self.assertRaises(ValueError, msg="It should be a value error"):
             self.account.transfer_account(5000, self.account_two)
 
     def test_transaction_log(self):
