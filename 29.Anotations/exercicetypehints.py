@@ -26,6 +26,6 @@ def filter_func(list_para: list, salary: Union[int, float]) -> Optional[list]:
 print(filter_func(test_ex, salary_limit))
 
 def map_func(list_para: list, salary: Union[int, float]) -> Optional[list]:
-    return list(map(lambda employee: employee if employee['salary'] >= salary_limit else None , list_para))
+    return list(map(lambda employee: employee if employee['salary'] >= salary else None , list_para))
 
 print(map_func(test_ex, salary_limit))
