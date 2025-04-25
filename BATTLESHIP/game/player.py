@@ -24,8 +24,7 @@ class Player:
 
     def attack(self, opponent):
                 board_impacts = []
-                row_attack = int(input("Enter the row to attack: =>"))
-                col_attack = int(input("Enter the column to attack: =>"))
+                row_attack, col_attack = self.ask_row_col()
 
                 if row_attack < 0 or col_attack < 0 or row_attack >= len(self.attack_board) or col_attack >= len(self.attack_board[0]):
                     print("The position is not valid, less than 0 or out of bounds")
@@ -86,7 +85,20 @@ class Player:
         
         return True
     
-    
+    def ask_row_col(self):
+        while True:
+            try:
+                row_attack = int(input("Enter the row to attack: =>"))
+                col_attack = int(input("Enter the column to attack: =>"))
+                return row_attack, col_attack
+            except ValueError as e:
+                print('Error: Please enter an integer for the row and column.')
+                print("Please try again.")
+            except TypeError as e:
+                print('Error: Invalid input type. Please enter integers.')
+                print("Please try again.")
+
+                
 # # Create player objects
 # player = Player("Andres")
 # print('*' * 40)
