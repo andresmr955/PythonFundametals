@@ -15,3 +15,5 @@ class Employee:
 employe1 = Employee("Carlos", 30, 3500.0)
 
 print(employe1.introduce())
+
+isinstance()
