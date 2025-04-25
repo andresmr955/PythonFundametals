@@ -29,10 +29,10 @@ def receive_dic():
 ]
 
 def filtre_return(empleados, salary):
-        return [empleado for empleado in empleados if empleado["salary"] > salary]
+        return [empleado for empleado in empleados if empleado["salary"] >= salary]
         
 create_empleados = receive_dic()
 
-empleados_filtrados = filtre_return(create_empleados, 4000)
+empleados_filtrados = filtre_return(create_empleados, 8500)
 
 print(empleados_filtrados)

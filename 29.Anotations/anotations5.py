@@ -12,4 +12,4 @@ def find_employee(salary: Union[int, float]) -> float:
     float: The salary converted a float
     
     """
-    
+    return float(salary)
