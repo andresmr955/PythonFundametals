@@ -12,9 +12,9 @@ class Player:
         ships_to_place = [("Destroyer", Destroyer()), ("Submarine", Submarine()), ("Battleship", Battleship())]
 
         for name, ship in ships_to_place:
-            while not ship.place_ship(self.board, start_row= int(input(f"Enter the initial row of the {name}: =>")), 
-                                start_col = int(input(f"Enter the initial column of the {name}: =>")), 
-                                direction = input(f"Direction of the {name}: (H): Horizontal or (V): Vertical:")):     
+            start_row, start_col, direction = self.ask_start_row__start_col(name)
+            while not ship.place_ship(self.board, start_row, start_col, direction):
+                                     
                 print("Try again for the Destroyer.")
             self.ships.append(ship)
             
@@ -24,7 +24,7 @@ class Player:
 
     def attack(self, opponent):
                 board_impacts = []
-                row_attack, col_attack = self.ask_row_col()
+                row_attack, col_attack = self.ask_row_col_attack()
 
                 if row_attack < 0 or col_attack < 0 or row_attack >= len(self.attack_board) or col_attack >= len(self.attack_board[0]):
                     print("The position is not valid, less than 0 or out of bounds")
@@ -85,7 +85,7 @@ class Player:
         
         return True
     
-    def ask_row_col(self):
+    def ask_row_col_attack(self):
         while True:
             try:
                 row_attack = int(input("Enter the row to attack: =>"))
@@ -98,7 +98,36 @@ class Player:
                 print('Error: Invalid input type. Please enter integers.')
                 print("Please try again.")
 
-                
+    def ask_start_row__start_col(self, name):
+            start_row = None
+            while start_row is None:
+                try:
+                    start_row = int(input(f"Enter the initial row of the {name}: =>"))
+                except ValueError:
+                    print('Error: Please enter an integer for the row.')
+                    print("Please try again.")
+                except TypeError:
+                    print("Error: Please enter an integer for the row.")
+                    print("Please try again!")
+
+            start_col = None
+            while start_col is None:
+                try:
+                    start_col = int(input(f"Enter the initial column of the {name}: =>"))
+                except ValueError:
+                    print('Error: Please enter an integer for the column.')
+                    print("Please try again.")
+                except TypeError:
+                    print("Error: Please enter an integer for the column.")
+                    print("Please try again!")
+
+            while True:
+                direction = input(f"Direction of the {name}: (H): Horizontal or (V): Vertical:").upper()
+                if direction in ["H", "V"]:
+                    return start_row, start_col, direction
+                else:
+                    print('Error: Invalid direction. Please enter "H" for Horizontal or "V" for Vertical.')
+                    print("Please try again.")
 # # Create player objects
 # player = Player("Andres")
 # print('*' * 40)
