@@ -80,16 +80,20 @@ class Player:
     """
         
         while any(ship.hits != ship.size for ship in self.ships):
-            return False
-
-        
+            return False    
         return True
+    
+    def get_user_input(self, prompt):
+        user_input = input(prompt)
+        if user_input == "exit":
+            raise SystemExit("Player chose to exit the game")
+        return user_input
     
     def ask_row_col_attack(self):
         while True:
             try:
-                row_attack = int(input("Enter the row to attack: =>"))
-                col_attack = int(input("Enter the column to attack: =>"))
+                row_attack = int(self.get_user_input("Enter the row to attack: =>"))
+                col_attack = int(self.get_user_input("Enter the column to attack: =>"))
                 return row_attack, col_attack
             except ValueError as e:
                 print('Error: Please enter an integer for the row and column.')
@@ -102,7 +106,7 @@ class Player:
             start_row = None
             while start_row is None:
                 try:
-                    start_row = int(input(f"Enter the initial row of the {name}: =>"))
+                    start_row = int(self.get_user_input(f"Enter the initial row of the {name}: =>"))
                 except ValueError:
                     print('Error: Please enter an integer for the row.')
                     print("Please try again.")
@@ -113,7 +117,7 @@ class Player:
             start_col = None
             while start_col is None:
                 try:
-                    start_col = int(input(f"Enter the initial column of the {name}: =>"))
+                    start_col = int(self.get_user_input(f"Enter the initial column of the {name}: =>"))
                 except ValueError:
                     print('Error: Please enter an integer for the column.')
                     print("Please try again.")
@@ -122,7 +126,7 @@ class Player:
                     print("Please try again!")
 
             while True:
-                direction = input(f"Direction of the {name}: (H): Horizontal or (V): Vertical:").upper()
+                direction = self.get_user_input(f"Direction of the {name}: (H): Horizontal or (V): Vertical:").upper()
                 if direction in ["H", "V"]:
                     return start_row, start_col, direction
                 else:
