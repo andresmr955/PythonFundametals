@@ -28,7 +28,7 @@ class Ship:
         print(f'{self.start_row}, {self.start_col}, {self.direction.upper()}')
         
         if self.direction.upper() == "H":
-            if self.start_col + self.size <= len(board[0]):
+            if self.start_col + self.size <= len(board[0]) and self.start_row + self.size <= len(board):
                 for size_counter in range(self.size):
                     if board[self.start_row][self.start_col + size_counter] != " ":
                         print("You can not put your ship here")
@@ -44,9 +44,8 @@ class Ship:
                 return False 
                    
 
-        elif self.direction.upper() == "V": 
-            if self.start_row + self.size <= len(board):
-                
+        if self.direction.upper() == "V": 
+            if self.start_row + self.size <= len(board) and self.start_col + self.size <= len(board[0]):
                 for i in range(self.size):
                     if board[self.start_row + i][self.start_col] != " ":
                         print("You can not put your ship here")

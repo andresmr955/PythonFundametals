@@ -14,9 +14,14 @@ class Player:
         for name, ship in ships_to_place:
             start_row, start_col, direction = self.ask_start_row__start_col(name)
             while not ship.place_ship(self.board, start_row, start_col, direction): 
-                start_row, start_col, direction = self.ask_start_row__start_col(name)               
-                print(f"Try again for the {name}.")
-            self.ships.append(ship)
+                start_row, start_col, direction = self.ask_start_row__start_col(name)     
+
+                if ship.place_ship(self.board, start_row, start_col, direction):
+                    self.ships.append(ship)
+                    break
+                else:         
+                    print(f"Try again for the {name}.")
+            
             
     def print_board(self):
         for fila in self.board:
