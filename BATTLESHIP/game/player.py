@@ -13,9 +13,9 @@ class Player:
 
         for name, ship in ships_to_place:
             start_row, start_col, direction = self.ask_start_row__start_col(name)
-            while not ship.place_ship(self.board, start_row, start_col, direction):
-                                     
-                print("Try again for the Destroyer.")
+            while not ship.place_ship(self.board, start_row, start_col, direction): 
+                start_row, start_col, direction = self.ask_start_row__start_col(name)               
+                print(f"Try again for the {name}.")
             self.ships.append(ship)
             
     def print_board(self):
@@ -86,7 +86,9 @@ class Player:
     def get_user_input(self, prompt):
         user_input = input(prompt)
         if user_input == "exit":
-            raise SystemExit("Player chose to exit the game")
+            confirmation_input = input('Are you sure you want to exit? Confirm with: "YES", "yes", "y", "Y" ==> ')
+            if confirmation_input.upper() in ["YES", "yes", "y", "Y"]:
+                raise SystemExit("Player chose to exit the game")
         return user_input
     
     def ask_row_col_attack(self):
