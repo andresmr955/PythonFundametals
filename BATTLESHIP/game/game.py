@@ -14,7 +14,7 @@ class BattleshipGame:
         - Player two (e.g., the computer or another opponent)
         """
         self.player_one = Player("Andres")
-        self.player_two = Player("Opponent")
+        self.player_two = Player("Jose")
     
     def play(self):
 
@@ -40,13 +40,16 @@ class BattleshipGame:
             current_player.attack(opponent)
             print('*' * 40)
 
-            if opponent.all_ships_sunk():
-                print(f'\n{current_player.name} wins! All enemy ships have been sunk')
-                break
-            current_player, opponent = opponent, current_player
-            print('*' * 40)
-            print(f"\n{current_player.name}'s turn:")
+            if current_player.attack(opponent):
+                if opponent.all_ships_sunk():
+                    print(f'\n{current_player.name} wins! All enemy ships have been sunk')
+                    break
             
+            current_player, opponent = opponent, current_player
+            
+           
+            
+                
 battleinstance = BattleshipGame()
 
 battleinstance.play()

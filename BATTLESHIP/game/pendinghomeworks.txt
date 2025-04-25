@@ -1,0 +1,7 @@
+1. crear un metodo para mostrar tableros acada vez que ataque no deben estar incluidos en en lismo metodo que attack
+2. Verificar bien los turnos porque cuando gana uno, repite turnos
+3. Revisar bien el nombre cuando cambie de turno 
+4. verificar cada uno de los if del metodo attack
+
+
+

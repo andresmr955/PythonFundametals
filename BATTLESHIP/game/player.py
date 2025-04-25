@@ -33,10 +33,13 @@ class Player:
 
                 if row_attack < 0 or col_attack < 0 or row_attack >= len(self.attack_board) or col_attack >= len(self.attack_board[0]):
                     print("The position is not valid, less than 0 or out of bounds")
-                    return 
+                    print(f"Please try again {self.name}")
+                    return False
+                
                 if self.attack_board[row_attack][col_attack] != " ":
                     print("You already attacked this position.")
-                    return
+                    return False
+                
                 if opponent.board[row_attack][col_attack] in ["S", "D", "B"]:
                     print("Hit!")
                     self.attack_board[row_attack][col_attack] = "I"
@@ -50,6 +53,8 @@ class Player:
                             print(f'This is hit {ship.hits} on {ship.__class__.__name__}')
                             if ship.hits == ship.size:
                                 print(f"{ship.__class__.__name__} sunk!")
+                    
+                    
 
                 else:
                     print("Water!")
@@ -85,8 +90,8 @@ class Player:
     """
         
         while any(ship.hits != ship.size for ship in self.ships):
-            return False    
-        return True
+            return True    
+        return False
     
     def get_user_input(self, prompt):
         user_input = input(prompt)
@@ -99,8 +104,9 @@ class Player:
     def ask_row_col_attack(self):
         while True:
             try:
-                row_attack = int(self.get_user_input("Enter the row to attack: =>"))
-                col_attack = int(self.get_user_input("Enter the column to attack: =>"))
+                print(f'\n{self.name} is your turn \n')
+                row_attack = int(self.get_user_input("Enter the row to attack: => "))
+                col_attack = int(self.get_user_input("Enter the column to attack: => "))
                 return row_attack, col_attack
             except ValueError as e:
                 print('Error: Please enter an integer for the row and column.')
@@ -113,7 +119,10 @@ class Player:
             start_row = None
             while start_row is None:
                 try:
-                    start_row = int(self.get_user_input(f"Enter the initial row of the {name}: =>"))
+                    start_row = int(self.get_user_input(f"Enter the initial row of the {name}: => "))
+                    if not 0 <= start_row < len(self.board):
+                        print(f'Error: Row must be between 0 and {len(self.board) - 1}.')
+                        start_row = None
                 except ValueError:
                     print('Error: Please enter an integer for the row.')
                     print("Please try again.")
@@ -124,7 +133,10 @@ class Player:
             start_col = None
             while start_col is None:
                 try:
-                    start_col = int(self.get_user_input(f"Enter the initial column of the {name}: =>"))
+                    start_col = int(self.get_user_input(f"Enter the initial column of the {name}: => "))
+                    if not 0 <= start_col < len(self.board[0]):
+                        print(f'Error: Column must be between 0 and {len(self.board[0])}')
+                        start_col = None
                 except ValueError:
                     print('Error: Please enter an integer for the column.')
                     print("Please try again.")
@@ -133,7 +145,7 @@ class Player:
                     print("Please try again!")
 
             while True:
-                direction = self.get_user_input(f"Direction of the {name}: (H): Horizontal or (V): Vertical:").upper()
+                direction = self.get_user_input(f"Direction of the {name}: (H): Horizontal or (V): Vertical:  ").upper()
                 if direction in ["H", "V"]:
                     return start_row, start_col, direction
                 else:
