@@ -20,3 +20,4 @@ def count_products_counter(products: list[str]) -> Counter:
 orders = ['laptop', 'smartphone', 'laptop', 'tablet']
 result_2 = count_products_counter(orders)
 print(result_2)  # Output: defaultdict(<class 'int'>, {'laptop': 2, 'smartphone': 1, 'tablet': 1})
+
