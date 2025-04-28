@@ -1,6 +1,7 @@
 #implementar un decorador llamado log_employee_action que registre cualquier 
 # accion realidzada por un empleaado en un archivo de texto
 
+from datetime import datetime
 import os
 
 def log_employee_action(func):
@@ -24,13 +25,17 @@ def employee_action(employee_arg, action_arg):
         result = f'{employee_arg.get('name')} viewed his profile'
     elif action_arg == 'Submit a time-off request':
         result = f'{employee_arg.get('name')} has submit a request'
-    elif action_arg == "Clock in/Clock out":
-        result = f'{employee_arg.get('name')} is Clock in/Clock out'
+    elif action_arg == 'Clock in':
+        result = f'{employee_arg.get('name')} has signed in at {datetime.now()}'
+    elif action_arg == "Clock out":
+        result = f'{employee_arg.get('name')} has Clock out at {datetime.now()}'
 
     return result 
 
 employee = { "name": "Bob Johnson", "rol": "employee"}
 admins = {"name":"Alice Smith","rol": "admin"}
 
+employee_action(employee, 'Clock in')
 employee_action(employee, 'View profile')
 employee_action(employee, 'Submit a time-off request')
+employee_action(employee, 'Clock out')
