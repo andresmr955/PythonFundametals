@@ -13,6 +13,7 @@ class AllAssertsTests(unittest.TestCase):
     def test_assert_raises(self):
         with self.assertRaises(ValueError):
             int("I_am_not_a_number")
+
     def test_assert_in(self):
         self.assertIn(10, [1, 2, 10])
         self.assertNotIn(10, ["a", 4])
@@ -28,12 +29,12 @@ class AllAssertsTests(unittest.TestCase):
         }, user)
 
     def test_assert_set(self):
-        user = { 1,2,3}
-        self.assertSetEqual({ 1,2,3}, user)
+        user = {1,2,3}
+        self.assertSetEqual({1,2,3}, user)
     
     @unittest.skip("Work in progress, we will enable soon")
     def test_skip(self):
-        self.assertEqual("Hola", "bye")
+        self.assertEqual("Hello", "bye")
 
     @unittest.skipIf(SERVER == "server_b", "Skipped because we are not in the server")
     def test_skip_if(self):
@@ -42,3 +43,5 @@ class AllAssertsTests(unittest.TestCase):
     @unittest.expectedFailure
     def test_expected_failure(self):
         self.assertEqual(100 == 150)
+
+

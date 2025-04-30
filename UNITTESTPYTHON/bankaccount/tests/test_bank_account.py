@@ -1,12 +1,19 @@
 
-import unittest, os
-
+import unittest
+from dotenv import load_dotenv
 from src.bank_account import BankAccount
+from src.exchange_api import is_api_available
+from unittest.mock import patch
+import sys
+import os
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+load_dotenv()
 
 class BankAccountTest(unittest.TestCase):
     def setUp(self) -> None:
         self.account = BankAccount(balance=1000, log_file="transaction_log.txt")     
         self.account_two = BankAccount(balance=2000)    
+        self.api = os.getenv("BANXICO_API_KEY")
 
     def tearDown(self) -> None:
         if os.path.exists(self.account.log_file):
@@ -92,3 +99,11 @@ class BankAccountTest(unittest.TestCase):
 
         # 9. Make sure the expected message **was found** in the log
         self.assertTrue(found_log_message, f"Log message not found '{expected_message}'")
+
+    @unittest.skipUnless(is_api_available(os.getenv("BANXICO_API_KEY")), "API is not available")
+    @patch('src.exchange_api.get_exchange_rate')
+    def test_convert_to_usd(self, mock_get_exchange_rate):
+        mock_get_exchange_rate.return_value = 20
+        cad_balance = self.account.convert_to_cad(self.api)
+        self.assertAlmostEqual( cad_balance, 70.6998579) 
+        #print(f' => {cad_balance}')
