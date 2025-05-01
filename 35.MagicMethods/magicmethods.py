@@ -7,3 +7,19 @@ class Person:
 
 person = Person("Andres", 26)
 print(person)
+
+class Toy:
+    def __init__(self, name):
+        self.name = name
+
+    def __add__(self, other_toy):
+        return Toy(self.name + " and " + other_toy.name)
+
+# Create two toys
+toy1 = Toy("Car")
+toy2 = Toy("Airplane")
+
+# Use the magic method __add__ to "add" the toys
+toy3 = toy1 + toy2
+
+print(toy3.name)  # Output: Car and Airplane
