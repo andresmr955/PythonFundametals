@@ -15,3 +15,6 @@ vector1 = Vector(1,2)
 vector2 = Vector(2,1)
 vector3 = vector1 + vector2
 print(vector3)
+
+
+
