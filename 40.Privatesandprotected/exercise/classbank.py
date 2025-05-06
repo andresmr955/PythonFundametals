@@ -1,4 +1,5 @@
 import os
+import json
 from datetime import datetime
 
 class BankAccount:
@@ -84,8 +85,11 @@ class BankAccount:
         file_path = os.path.join(directory, 'transactions.txt')
 
         timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        transations = {'timestamp': timestamp, 'amount': amount, 'balance': self._balance}
+            
         with open(file_path, 'a') as file:
-            file.write({'timestamp': timestamp, 'amount': amount, 'balance': self._balance})
+            
+            file.write(json.dumps(transations, indent=4))
             file.write('\n')
 
             
@@ -93,7 +97,7 @@ class BankAccount:
 if __name__ == "__main__":
     account = BankAccount(1000, '123456789')
     account.deposit(500)
-    account.withdraw_balance(200) 
+    account.withdraw(200) 
     #print(account.get_balance()) # Accessing the protected balance attribute directly
     #account.__account_number
     # account.__account_number # This will raise an AttributeError because __account_number is private
