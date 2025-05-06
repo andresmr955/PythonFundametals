@@ -14,15 +14,15 @@ class TestBankAccount(unittest.TestCase):
             os.remove('40.Privatesandprotected/exercise/transactions.txt')
 
     def test_initial_balance(self):
-        self.assertEqual(self.account.get_balance, 1000.0)
+        self.assertEqual(self.account.balance, 1000.0)
     
     def test_deposit(self):
         self.account.deposit(500)
-        self.assertEqual(self.account.get_balance, 1500)
+        self.assertEqual(self.account.balance, 1500)
 
-    def test_withdraw_balance(self):
-        self.account.withdraw_balance(600)
-        self.assertEqual(self.account.get_balance, 400)
+    def test_withdraw(self):
+        self.account.withdraw(600)
+        self.assertEqual(self.account.balance, 400)
 
     def test_transaction_file_created(self):
         self.account.deposit(100) 
