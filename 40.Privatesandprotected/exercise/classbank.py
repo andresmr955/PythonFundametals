@@ -1,24 +1,17 @@
 import os
 import json
 from datetime import datetime
+import logging
+
+# Configura el logger
+logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
 class BankAccount:
-    bank_name = "MyBank" # It is an attribute of the class and is shared by all instances
-    """
-    A class representing a bank account with a protected balance and a private account number.
-
-    """
+    bank_name = "MyBank"  # Attribute shared by all instances
+    
     def __init__(self, balance: float, account_number: float):
-
-        """
-        Initializes a new BankAccount instance.
-
-        Parameters:
-            balance (float): The initial balance of the account.
-            account_number (str): The account number of the bank account.
-        """
-        self._balance = balance # Protected balance attribute
-        self.__account_number = account_number # Private account number attribute
+        self._balance = balance  # Protected balance attribute
+        self.__account_number = account_number  # Private account number attribute
     
     @property
     def balance(self) -> float:
@@ -28,76 +21,47 @@ class BankAccount:
     def show_info(self) -> str:
         return f"Bank: {BankAccount.bank_name}"
 
-    #protected method to update the balance
-    # and register the transaction in a file called transactions.txt
     def _update_balance(self, amount: float):
         """
         Updates the balance of the account by a specified amount.
-
         Parameters:
             amount (float): The amount to be added (positive for deposit, negative for withdrawal).
         """
         self._balance += amount
         self.__register_transaction(amount)
 
-    #class method to deposit and withdraw money from the account
     def deposit(self, amount):
-        """
-        Deposits a specified amount to the account and updates the balance.
-
-        Parameters:
-            amount (float): The amount to be deposited into the account.
-        """
+        """Deposits a specified amount to the account and updates the balance."""
         self._update_balance(amount)
-        print(f'Deposit of {amount} new balance is {self._balance}')
+        logging.info(f'Deposit of {amount} new balance is {self._balance}')
 
     def withdraw(self, amount):
-
         """
         Withdraws a specified amount from the account if there are sufficient funds.
-
         Parameters:
             amount (float): The amount to be withdrawn from the account.
-
-        Returns:
-            str: A message indicating whether the withdrawal was successful or if there were insufficient funds.
         """
         if amount <= self._balance:
             self._update_balance(-amount)
-            print(f'The withdraw {amount}.New balance is {self._balance}')
+            logging.info(f'The withdraw {amount}. New balance is {self._balance}')
         else:
-            print('Insufficient funds')
+            logging.warning('Insufficient funds')
     
-    #private method to register the transaction in a file
-    # and check the current directory
     def __register_transaction(self, amount):
-        # Check the current directory
-        
-        """
-        Logs the transaction details to a file.
-
-        Parameters:
-            amount (float): The amount involved in the transaction.
-        """
-        # Open the file in append mode and log the transaction
-        directory = '40.Privatesandprotected/exercise'
+        """Logs the transaction details to a file."""
+        directory = '40.Privatesandprotected/exercise/'
         os.makedirs(directory, exist_ok=True)  
         file_path = os.path.join(directory, 'transactions.txt')
 
         timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-        transations = {'timestamp': timestamp, 'amount': amount, 'balance': self._balance}
-            
+        transactions = {'timestamp': timestamp, 'amount': amount, 'balance': self._balance}
+        
         with open(file_path, 'a') as file:
-            
-            file.write(json.dumps(transations, indent=4))
+            logging.info(f"Writing to the file at: {file_path}")
+            file.write(json.dumps(transactions, indent=4))
             file.write('\n')
-
-            
 
 if __name__ == "__main__":
     account = BankAccount(1000, '123456789')
     account.deposit(500)
-    account.withdraw(200) 
-    #print(account.get_balance()) # Accessing the protected balance attribute directly
-    #account.__account_number
-    # account.__account_number # This will raise an AttributeError because __account_number is private
+    account.withdraw(200)
