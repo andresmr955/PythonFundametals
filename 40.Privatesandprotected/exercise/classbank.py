@@ -1,4 +1,5 @@
 import os
+from datetime import datetime
 
 class BankAccount:
     bank_name = "MyBank" # It is an attribute of the class and is shared by all instances
@@ -49,7 +50,7 @@ class BankAccount:
         self._update_balance(amount)
         print(f'Deposit of {amount} new balance is {self._balance}')
 
-    def withdraw_balance(self, amount):
+    def withdraw(self, amount):
 
         """
         Withdraws a specified amount from the account if there are sufficient funds.
@@ -81,8 +82,11 @@ class BankAccount:
         directory = '40.Privatesandprotected/exercise'
         os.makedirs(directory, exist_ok=True)  
         file_path = os.path.join(directory, 'transactions.txt')
+
+        timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
         with open(file_path, 'a') as file:
-            file.write(f'Transaction of {amount} registered for account number {self.__account_number}\n')
+            file.write({'timestamp': timestamp, 'amount': amount, 'balance': self._balance})
+            file.write('\n')
 
             
 
