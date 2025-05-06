@@ -1,0 +1,15 @@
+{
+    "timestamp": "2025-05-06 17:44:25",
+    "amount": 500,
+    "balance": 1500
+}
+{
+    "timestamp": "2025-05-06 17:44:38",
+    "amount": 500,
+    "balance": 1500
+}
+{
+    "timestamp": "2025-05-06 17:44:38",
+    "amount": -200,
+    "balance": 1300
+}
