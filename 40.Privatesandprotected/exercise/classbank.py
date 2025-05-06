@@ -19,7 +19,7 @@ class BankAccount:
         self.__account_number = account_number # Private account number attribute
     
     @property
-    def get_balance(self) -> float:
+    def balance(self) -> float:
         """Returns the current balance of the account."""
         return self._balance
     
