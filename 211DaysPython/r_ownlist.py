@@ -4,7 +4,10 @@ class MyList:
         # Tu código aquí 👇
         self.data = initial_data if initial_data else []
         self.length = 0
-
+    
+    def __getitem__(self, index):
+        return self.data[index]
+    
 my_o_List = MyList()
 
 my_o_List.append(1)
