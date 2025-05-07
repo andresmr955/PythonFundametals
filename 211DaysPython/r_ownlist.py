@@ -8,6 +8,11 @@ class MyList:
     def __getitem__(self, index):
         return self.data[index]
     
+    def __str__(self):
+        return f"My list: {self.data}"
+    
+    
+
 my_o_List = MyList()
 
 my_o_List.append(1)
