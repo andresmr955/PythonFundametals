@@ -16,7 +16,11 @@ class MyList:
         self.data += [item]
         self.length += 1
     
-
+        
+    def map(self, func):
+        mapped_data = [func(i) for i in self.data]
+        return MyList(mapped_data)
+    
 my_o_List = MyList()
 
 my_o_List.append(1)
