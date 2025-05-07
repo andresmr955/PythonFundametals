@@ -21,6 +21,12 @@ class MyList:
         mapped_data = [func(i) for i in self.data]
         return MyList(mapped_data)
     
+    
+    def filter(self, func):
+        filtered_data = [i for i in self.data if func(i) ]
+        return MyList(filtered_data)
+
+  
 my_o_List = MyList()
 
 my_o_List.append(1)
