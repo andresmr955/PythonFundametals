@@ -26,7 +26,13 @@ class MyList:
         filtered_data = [i for i in self.data if func(i) ]
         return MyList(filtered_data)
 
-  
+    def join(self, character=","):
+        result = ""
+        for i, item in enumerate(self.data): 
+           result += str(item)
+           if i < self.length - 1:
+               result += character
+        return result
 my_o_List = MyList()
 
 my_o_List.append(1)
