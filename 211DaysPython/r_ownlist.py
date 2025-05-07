@@ -11,6 +11,10 @@ class MyList:
     def __str__(self):
         return f"My list: {self.data}"
     
+    def append(self, item):
+        # Tu código aquí 👇
+        self.data += [item]
+        self.length += 1
     
 
 my_o_List = MyList()
