@@ -26,3 +26,22 @@ def logger(order_id: int, status: Status, message: str) -> None:
     else:
         logging.info(log_message)
         
+
+#Creating asynchronous function to check the status of the inventory
+async def check_inventory(item):
+   logger(1, Status.START, f"Verifying inventory to {item}")
+   #we are pausing to start other process
+   await asyncio.sleep(random.randint(3,6))
+   logger(1, Status.START, f'Inventory verifying to {item}')
+
+   return random.choice([True, False])
+#We are creating an asynchronous function to process payment
+
+async def process_payment(order_id):
+    logger(1, Status.PENDING, f"Processing payment to the order {order_id}")
+
+    #simulate waiting time that a payment service has
+    await asyncio.sleep(random.randint(3,6))
+    logger(1, Status.FINISHED, f'Payment processed to the order {order_id}')
+    return True
+
