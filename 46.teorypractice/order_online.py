@@ -14,3 +14,6 @@ class Status(enum.Enum):
     PENDING = 'PENDING 🚧'
     CANCELED = 'CANCELED ❌'
     FINISHED = 'FINISHED 🎉🎆'
+
+def logger(order_id: int, status: Status, message: str) -> None:
+   
