@@ -45,3 +45,10 @@ async def process_payment(order_id):
     logger(1, Status.FINISHED, f'Payment processed to the order {order_id}')
     return True
 
+#Function to simulate an intensive work in the CPU  to calculate the cost of order
+def calculate_total(items):
+    logger(1, Status.START, f"Calculating the total cost to {len(item)} articles")
+    time.sleep(5)
+    total = sum(item['price'] for item in items) 
+    logger(1, Status.FINISHED, f'Total cost calculated {total}')        
+    return total
