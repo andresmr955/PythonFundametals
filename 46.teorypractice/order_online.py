@@ -16,4 +16,13 @@ class Status(enum.Enum):
     FINISHED = 'FINISHED 🎉🎆'
 
 def logger(order_id: int, status: Status, message: str) -> None:
-   
+    log_message = f'[order_id: {order_id}] status: {status.value} | message: {message}'
+    if status == Status.CANCELED:
+        logging.warning(log_message)
+    elif status == Status.FINISHED:
+        logging.info(log_message)
+    elif status == Status.PENDING:
+        logging.debug(log_message)
+    else:
+        logging.info(log_message)
+        
