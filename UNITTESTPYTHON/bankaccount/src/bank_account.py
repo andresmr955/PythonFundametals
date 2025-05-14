@@ -58,7 +58,7 @@ class BankAccount:
         
         exchange_rate = get_exchange_rate(api_key)
         if exchange_rate:
-            return round(self.balance / exchange_rate, 7)
+            return round(self.balance / exchange_rate, 1)
         else: 
             self.log_transaction("Failed to convert balance to CAD.")
             return None

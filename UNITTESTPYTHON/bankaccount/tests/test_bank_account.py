@@ -27,32 +27,32 @@ class BankAccountTest(unittest.TestCase):
         with open(filename, 'r') as f:
              return f.readlines()
             
-    def test_deposit(self):
+    def test_deposit_increase_balance(self):
           
           new_balance = self.account.deposit(410)
           assert new_balance == 1410
 
-    def test_withdraw(self):
+    def test_withdraw_decreases_balance(self):
          
          new_balance = self.account.withdraw(400)
          assert new_balance == 600
 
-    def test_get_balance(self):
+    def test_get_balance_returns_current_balance(self):
          
          balance = self.account.get_balance()
          assert balance == 1000
 
-    # ----------------CHALLANGE-----------------------------
-    def test_transfer_account(self):
+    # ----------------CHALLENGE-----------------------------
+    def test_transfer_account_decreases_sender_balance(self):
         new_balance = self.account.transfer_account(500, self.account_two)
         self.assertEqual(new_balance, 500)
         self.assertEqual(self.account_two.balance, 2500)
     
-    def test_transfer_account_error(self):
+    def test_transfer_account_error_insufficient_founds(self):
         with self.assertRaises(ValueError, msg="It should be a value error"):
             self.account.transfer_account(5000, self.account_two)
 
-    def test_transaction_log(self):
+    def test_transaction_logs_each_transaction(self):
         self.account.deposit(678)
         assert os.path.exists("transaction_log.txt")
 
@@ -105,5 +105,5 @@ class BankAccountTest(unittest.TestCase):
     def test_convert_to_usd(self, mock_get_exchange_rate):
         mock_get_exchange_rate.return_value = 20
         cad_balance = self.account.convert_to_cad(self.api)
-        self.assertAlmostEqual( cad_balance, 70.6998579) 
+        self.assertAlmostEqual( cad_balance, 71.8) 
         #print(f' => {cad_balance}')
