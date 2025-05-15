@@ -1,7 +1,8 @@
 from src.exchange_api import get_exchange_rate, is_api_available
 import os
+from datetime import datetime
 from dotenv import load_dotenv
-
+from src.exceptions import InsufficientFundsError, WithdrawalTimeRestrictionError
 
 load_dotenv()
 
@@ -23,10 +24,14 @@ class BankAccount:
         return self.balance
     
     def withdraw(self, amount):
+        now = datetime.now()
 
+        if now.hour < 8 or now.hour > 17:
+            raise WithdrawalTimeRestrictionError("Withdrawal are only allowed from 8am to 5pm")
+        
         if amount > self.balance:
             raise ValueError("Insufficient funds") 
-        elif amount < 0:
+        elif amount < 0: 
             raise ValueError("It is not possible")
         else:
             self.balance -= amount

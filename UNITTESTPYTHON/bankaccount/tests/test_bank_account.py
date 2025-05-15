@@ -36,9 +36,13 @@ class BankAccountTest(unittest.TestCase):
          
          new_balance = self.account.withdraw(400)
          assert new_balance == 600
-
+    
+    @patch("src.bank_account.datetime")     
+    def test_withdrawal_during_business_hours(self, mock_datetime):
+        mock_datetime.now.return_value.hour = 10
+        self.account.withdraw(100)
+    
     def test_get_balance_returns_current_balance(self):
-         
          balance = self.account.get_balance()
          assert balance == 1000
 

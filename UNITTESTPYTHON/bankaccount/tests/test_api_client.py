@@ -44,3 +44,14 @@ class ApiClientTests(unittest.TestCase):
         self.assertEqual(result.get("city"), "MIAMI")
      
         # result = get_location("8.8.8.8")
+    
+    @patch('src.exchange_api.requests.get')
+    def test_get_location_service_requess_invalid_ip(self, mock_get):
+        mock_response = unittest.mock.Mock()
+
+        mock_response.status_code = 400
+
+        mock_get.return_value = mock_response
+
+        with self.assertRaises(Exception):
+            get_location("invalid-ip")
