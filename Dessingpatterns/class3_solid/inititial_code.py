@@ -2,6 +2,8 @@ import os
 from dotenv import load_dotenv
 
 _ = load_dotenv()
+api_key = os.getenv("STRIPE_API_KEY")
+print(f"Tu API key es: {api_key}")
 
 class PaymentProcessor:
     def process_transaction(self, customer_data, payment_data):
