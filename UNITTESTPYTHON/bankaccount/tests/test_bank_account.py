@@ -44,24 +44,40 @@ class BankAccountTest(unittest.TestCase):
     
     @patch("src.bank_account.datetime")     
     def test_withdrawal_during_business_hours(self, mock_datetime):
-        mock_datetime.now.return_value.hour = 10
+        mock_now = unittest.mock.Mock()
+        mock_now.hour = 10
+        mock_datetime.now.return_value = mock_now.hour
         new_balance = self.account.withdraw(100)
         self.assertEqual(new_balance, 900)
 
     @patch("src.bank_account.datetime")     
     def test_withdrawal_disallow_before_business_hours(self, mock_datetime):
-        mock_datetime.now.return_value.hour = 7
+        mock_now = unittest.mock.Mock()
+        mock_now.hour = 7
+        mock_datetime.now.return_value.hour = mock_now
 
         with self.assertRaises(WithdrawalTimeRestrictionError):
             self.account.withdraw(100)
     
     @patch("src.bank_account.datetime")
+    def test_withdrawal_allow_in_business_days(self, mock_datetime):
+        mock_now = unittest.mock.Mock()
+        mock_now.hour = 10
+        mock_now.isoweekday = lambda: 5
+        mock_datetime.now.return_value = mock_now
+        new_balance = self.account.withdraw(400)
+        self.assertEqual(new_balance, 600)
+
+    @patch("src.bank_account.datetime")
     def test_withdrawal_disallow_in_not_business_days(self, mock_datetime):
-        mock_datetime.now.return_value.isoweekday.return_value = 6
+        mock_now = unittest.mock.Mock()
+        mock_now.hour = 10
+        mock_now.isoweekday = lambda: 7
+        mock_datetime.now.return_value = mock_now
 
         with self.assertRaises(WithdrawalDayTimeRestrictionError):
             self.account.withdraw(900)
-
+            
     def test_get_balance_returns_current_balance(self):
          balance = self.account.get_balance()
          assert balance == 1000
