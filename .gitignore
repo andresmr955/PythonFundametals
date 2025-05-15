@@ -179,7 +179,8 @@ venv/
 ENV/
 env.bak/
 venv.bak/
-designpatterns/.env
+Dessingpatterns/.env
+
 # Spyder project settings
 .spyderproject
 .spyproject
