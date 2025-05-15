@@ -4,6 +4,7 @@ from dotenv import load_dotenv
 from src.bank_account import BankAccount
 from src.exchange_api import is_api_available
 from unittest.mock import patch
+from src.exceptions import WithdrawalTimeRestrictionError, WithdrawalDayTimeRestrictionError
 import sys
 import os
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
@@ -19,6 +20,10 @@ class BankAccountTest(unittest.TestCase):
         if os.path.exists(self.account.log_file):
             os.remove(self.account.log_file)
     
+    def test_api_key_presence(self):
+        api_key = os.getenv("BANXICO_API_KEY")
+        self.assertTrue(api_key and len(api_key) > 0, "Falta la API key para Banxico")
+
     def _count_lines(self,filename):
         with open(filename, "r") as f:
             return len(f.readlines())
@@ -40,8 +45,23 @@ class BankAccountTest(unittest.TestCase):
     @patch("src.bank_account.datetime")     
     def test_withdrawal_during_business_hours(self, mock_datetime):
         mock_datetime.now.return_value.hour = 10
-        self.account.withdraw(100)
+        new_balance = self.account.withdraw(100)
+        self.assertEqual(new_balance, 900)
+
+    @patch("src.bank_account.datetime")     
+    def test_withdrawal_disallow_before_business_hours(self, mock_datetime):
+        mock_datetime.now.return_value.hour = 7
+
+        with self.assertRaises(WithdrawalTimeRestrictionError):
+            self.account.withdraw(100)
     
+    @patch("src.bank_account.datetime")
+    def test_withdrawal_disallow_in_not_business_days(self, mock_datetime):
+        mock_datetime.now.return_value.isoweekday.return_value = 6
+
+        with self.assertRaises(WithdrawalDayTimeRestrictionError):
+            self.account.withdraw(900)
+
     def test_get_balance_returns_current_balance(self):
          balance = self.account.get_balance()
          assert balance == 1000

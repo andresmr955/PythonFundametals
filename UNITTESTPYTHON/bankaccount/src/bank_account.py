@@ -1,8 +1,8 @@
-from src.exchange_api import get_exchange_rate, is_api_available
+from .exchange_api import get_exchange_rate
 import os
 from datetime import datetime
 from dotenv import load_dotenv
-from src.exceptions import InsufficientFundsError, WithdrawalTimeRestrictionError
+from .exceptions import WithdrawalDayTimeRestrictionError, WithdrawalTimeRestrictionError
 
 load_dotenv()
 
@@ -25,7 +25,10 @@ class BankAccount:
     
     def withdraw(self, amount):
         now = datetime.now()
-
+        
+        if now.isoweekday() in [6,7]:
+            raise WithdrawalDayTimeRestrictionError("Withdrawal are only allowed in business days")
+        
         if now.hour < 8 or now.hour > 17:
             raise WithdrawalTimeRestrictionError("Withdrawal are only allowed from 8am to 5pm")
         
@@ -77,3 +80,4 @@ api_key = os.getenv("BANXICO_API_KEY")
 result = cuenta_ex.convert_to_cad(api_key)
 
 #print(result)
+
