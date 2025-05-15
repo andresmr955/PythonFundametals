@@ -25,10 +25,10 @@ class BankAccount:
     
     def withdraw(self, amount):
         now = datetime.now()
-        
+    
         if now.isoweekday() in [6,7]:
-            raise WithdrawalDayTimeRestrictionError("Withdrawal are only allowed in business days")
-        
+            raise WithdrawalDayTimeRestrictionError("Withdrawal are only allowed in business days") 
+
         if now.hour < 8 or now.hour > 17:
             raise WithdrawalTimeRestrictionError("Withdrawal are only allowed from 8am to 5pm")
         
