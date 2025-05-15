@@ -1,4 +1,3 @@
-test_bank_account.py
 import unittest
 from dotenv import load_dotenv
 from src.bank_account import BankAccount
