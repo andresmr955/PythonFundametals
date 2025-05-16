@@ -13,7 +13,7 @@ class MyList:
     
     def append(self, item):
         # Tu código aquí 👇
-        self.data += [item]
+        self.data[self.length] = item
         self.length += 1
     
         
@@ -23,16 +23,28 @@ class MyList:
     
     
     def filter(self, func):
-        filtered_data = [i for i in self.data if func(i) ]
+        filtered_data = {k: v for k, v in self.data.items() if func(v) }
         return MyList(filtered_data)
 
     def join(self, character=","):
         result = ""
-        for i, item in enumerate(self.data): 
-           result += str(item)
+        for i in range(self.length): 
+           result += str(self.data[i])
            if i < self.length - 1:
                result += character
         return result
+
+    def pop(self):
+
+        if self.length == 0:
+            return None
+            
+        last_item = self.data[self.length - 1]
+        del self.data[self.length - 1]
+        self.length -= 1
+        return last_item 
+            
+
 my_o_List = MyList()
 
 my_o_List.append(1)
@@ -41,12 +53,15 @@ my_o_List.append(3)
 my_o_List.append(4)
 my_o_List.append(5)
 
-print([i for i in my_o_List])
+# print([i for i in my_o_List])
 #my_o_List.append(3)
 
 
 #new_list = my_o_List.map(lambda x: x * 2)
 #print(new_list)
 
+
+print(my_o_List.data)
 print(my_o_List.filter(lambda x: x > 2))
 print(my_o_List.join(character="x"))
+print(my_o_List.pop())
