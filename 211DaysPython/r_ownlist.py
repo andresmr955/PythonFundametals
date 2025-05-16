@@ -38,12 +38,22 @@ class MyList:
 
         if self.length == 0:
             return None
-            
+
         last_item = self.data[self.length - 1]
         del self.data[self.length - 1]
         self.length -= 1
         return last_item 
             
+
+    def shift(self):
+        new_data = {}
+        for i in range(1, self.length):
+            print(i)
+            new_data[i - 1] = self.data[i]
+
+        self.data = new_data
+        self.length -= 1
+        return self.data
 
 my_o_List = MyList()
 
@@ -65,3 +75,4 @@ print(my_o_List.data)
 print(my_o_List.filter(lambda x: x > 2))
 print(my_o_List.join(character="x"))
 print(my_o_List.pop())
+print(my_o_List.shift())
