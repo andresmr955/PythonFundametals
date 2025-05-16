@@ -27,7 +27,7 @@ class MyList:
         new_key = 0
         
         for _, value in self.data.items():
-            if func(value)
+            if func(value):
                 new_filter[new_key] = value
                 new_key += 1
 
@@ -62,6 +62,18 @@ class MyList:
         self.data = new_data
         self.length -= 1
         return first_item
+
+    def unshift(self, element):
+        new_dict = {}
+        for i in range(1, self.length):
+            if i == 1:
+                new_dict[i - 1] = element
+            else:
+                new_dict[i - 1] = self.data[i]
+
+        self.data = new_dict
+        self.length += 1
+        return self.data
 
 my_o_List = MyList()
 
