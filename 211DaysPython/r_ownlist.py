@@ -2,8 +2,8 @@
 class MyList:
     def __init__(self, initial_data= None):
         # Tu código aquí 👇
-        self.data = initial_data if initial_data else []
-        self.length = 0
+        self.data = initial_data if initial_data else {}
+        self.length = len(self.data)
     
     def __getitem__(self, index):
         return self.data[index]
@@ -18,7 +18,7 @@ class MyList:
     
         
     def map(self, func):
-        mapped_data = [func(i) for i in self.data]
+        mapped_data = {func(i) for i in self.data}
         return MyList(mapped_data)
     
     
