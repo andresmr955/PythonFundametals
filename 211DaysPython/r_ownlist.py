@@ -18,13 +18,20 @@ class MyList:
     
         
     def map(self, func):
-        mapped_data = {func(i) for i in self.data}
+        mapped_data = {k: func(v) for k, v in self.data.items()}
         return MyList(mapped_data)
     
     
     def filter(self, func):
-        filtered_data = {k: v for k, v in self.data.items() if func(v) }
-        return MyList(filtered_data)
+        new_filter = {}
+        new_key = 0
+        
+        for _, value in self.data.items():
+            if func(value)
+                new_filter[new_key] = value
+                new_key += 1
+
+        return MyList(new_filter)
 
     def join(self, character=","):
         result = ""
@@ -47,13 +54,14 @@ class MyList:
 
     def shift(self):
         new_data = {}
+        first_item = self.data[0]
         for i in range(1, self.length):
-            print(i)
+            
             new_data[i - 1] = self.data[i]
 
         self.data = new_data
         self.length -= 1
-        return self.data
+        return first_item
 
 my_o_List = MyList()
 
@@ -72,7 +80,10 @@ my_o_List.append(5)
 
 
 print(my_o_List.data)
-print(my_o_List.filter(lambda x: x > 2))
+print(f'{my_o_List.filter(lambda x: x if x > 2 else None)}')
 print(my_o_List.join(character="x"))
 print(my_o_List.pop())
+print(my_o_List.data)
+
 print(my_o_List.shift())
+print(my_o_List.data)
