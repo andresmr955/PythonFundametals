@@ -57,13 +57,14 @@ class ContactList:
         return None
         
     def showBuckets(self):
-    for i, bucket in enumerate(self.data):
-        print(f"Bucket {i}: {bucket}")
+        for i, bucket in enumerate(self.data):
+            print(f"Bucket {i}: {bucket}")
+            
 my_contact = ContactList(5)
 my_contact.insert("Andres" , 123456)
 my_contact.insert("Angie" , 987654)
 my_contact.insert("Paula" , 987654)
-
+my_contact.showBuckets()
 print("get", my_contact.get("Andres"))
 print("retrieve", my_contact.retrieveAll())
 print("get",my_contact.get("Angie"))
