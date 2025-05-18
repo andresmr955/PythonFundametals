@@ -17,4 +17,6 @@ plt.title('Comparison of times: Loop vs Recursivity')
 plt.legend()
 plt.grid(True)
 plt.tight_layout()
+plt.savefig('graphtimesimg.png')
+
 plt.show()
