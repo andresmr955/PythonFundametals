@@ -52,10 +52,11 @@ class BankAccount:
         self.log_transaction(f"Deposited {amount}. New balance: {self.balance}")
         return self.balance
     
-    def withdraw(self, amount):
+    def withdraw(self, amount, now=None):
 
 
         """
+        
         >>> account = BankAccount(1000)
         >>> account.withdraw(500)
         500
@@ -71,8 +72,31 @@ class BankAccount:
             ...
         ValueError: It is not possible
 
-        """
-        now = datetime.now()
+        >>> import datetime
+        
+        >>> account = BankAccount(1000)
+        >>> weekday = datetime.datetime(2025,5,15, 10)
+        >>> account.withdraw(50, now=weekday)
+        950
+        
+        >>> import datetime
+        >>> account = BankAccount(1000)
+        >>> earl_morning = datetime.datetime(2025, 5, 15, 7)
+        >>> account.withdraw(50, now=earl_morning)
+        Traceback (most recent call last):
+            ...
+        exceptions.WithdrawalTimeRestrictionError: Withdrawal are only allowed from 8am to 5pm
+
+        >>> import datetime
+        >>> account = BankAccount(4000)
+        >>> weekend_day = datetime.datetime(2025, 5, 18, 7)
+        >>> account.withdraw(2000, now=weekend_day)
+        Traceback (most recent call last):
+            ...
+        exceptions.WithdrawalDayTimeRestrictionError: Withdrawal are only allowed in business days
+"""
+        if now is None:
+            now = datetime.now()
     
         if now.isoweekday() in [6,7]:
             raise WithdrawalDayTimeRestrictionError("Withdrawal are only allowed in business days") 
