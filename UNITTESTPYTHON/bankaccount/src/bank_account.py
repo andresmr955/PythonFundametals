@@ -40,7 +40,7 @@ class BankAccount:
         1000
 
         >>> account = BankAccount()
-        >>> account.deposit(400)
+        >>> account.deposit(-400)
         Traceback (most recent call last):
             ...
         ValueError: Deposit amount must be positive
@@ -53,6 +53,25 @@ class BankAccount:
         return self.balance
     
     def withdraw(self, amount):
+
+
+        """
+        >>> account = BankAccount(1000)
+        >>> account.withdraw(500)
+        500
+
+
+        >>> account.withdraw(2000)
+        Traceback (most recent call last):
+            ...
+        ValueError: Insufficient funds
+
+        >>> account.withdraw(-2000)
+        Traceback (most recent call last):
+            ...
+        ValueError: It is not possible
+
+        """
         now = datetime.now()
     
         if now.isoweekday() in [6,7]:
