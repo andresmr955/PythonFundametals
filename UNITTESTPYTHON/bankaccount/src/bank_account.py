@@ -1,10 +1,10 @@
 
 
-from .exchange_api import get_exchange_rate
+from exchange_api import get_exchange_rate
 import os
 from datetime import datetime
 from dotenv import load_dotenv
-from .exceptions import WithdrawalDayTimeRestrictionError, WithdrawalTimeRestrictionError
+from exceptions import WithdrawalDayTimeRestrictionError, WithdrawalTimeRestrictionError
 
 load_dotenv()
 
@@ -15,11 +15,27 @@ class BankAccount:
         self.log_transaction('Created account')
         
     def log_transaction(self, message):
+
+        """
+        Write a message
+
+        >>> import os
+        >>> temp_file = "temp_log.txt"
+        >>> account = BankAccount(log_file=temp_file)
+        >>> account.log_transaction("Test message")
+        >>> with open(temp_file) as f:
+        ...    print(f.read().strip())
+        
+        Test message
+        >>> os.remove(temp_file)
+        """
         if self.log_file:
             with open(self.log_file, "a") as f:
                 f.write(f"{message}\n")
 
     def deposit(self, amount):
+
+        
         if amount > 0:
             self.balance += amount
             self.log_transaction(f"Deposited {amount}. New balance: {self.balance}")
