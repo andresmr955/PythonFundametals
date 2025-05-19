@@ -1,6 +1,6 @@
 import unittest, requests
 from unittest.mock import patch
-from src.exchange_api import get_location
+from bankaccount.src.exchange_api import get_location
 
 class ApiClientTests(unittest.TestCase):
     

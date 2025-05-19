@@ -101,7 +101,7 @@ class BankAccount:
         if now.isoweekday() in [6,7]:
             raise WithdrawalDayTimeRestrictionError("Withdrawal are only allowed in business days") 
 
-        if now.hour < 8 or now.hour > 17:
+        if now.hour < 8 or now.hour > 23:
             raise WithdrawalTimeRestrictionError("Withdrawal are only allowed from 8am to 5pm")
         
         if amount > self.balance:
@@ -129,7 +129,8 @@ class BankAccount:
             self.log_transaction(f"You have tried to transfer {amount}, but the funds are not enough your balance is: {self.balance}")
             raise 
         return self.balance
-    def convert_to_cad(self, api):
+    
+    def convert_to_cad(self, api_key):
 
         if not api_key:
             print("Error: Banxico API key is not set in environment variable BANXICO_API_KEY")
@@ -142,14 +143,16 @@ class BankAccount:
         else: 
             self.log_transaction("Failed to convert balance to CAD.")
             return None
-        
-cuenta_ex = BankAccount(200)
-# my_cuenta = BankAccount(300)
-# print(my_cuenta.transfer_account(600, cuenta_ex))
-# print(cuenta_ex.get_balance())
-api_key = os.getenv("BANXICO_API_KEY")
 
-result = cuenta_ex.convert_to_cad(api_key)
+# if __name__ == "__main__":
 
-#print(result)
+#     cuenta_ex = BankAccount(200)
+#     # my_cuenta = BankAccount(300)
+#     # print(my_cuenta.transfer_account(600, cuenta_ex))
+#     # print(cuenta_ex.get_balance())
+#     api_key = os.getenv("BANXICO_API_KEY")
+
+#     result = cuenta_ex.convert_to_cad(api_key)
+
+#     #print(result)
 

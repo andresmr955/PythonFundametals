@@ -8,7 +8,11 @@ def get_exchange_rate(api):
     if response.status_code == 200:
         data = response.json()
         #print(data)
-        return float(data['bmx']['series'][0]['datos'][0]['dato'])
+        rate_str = data['bmx']['series'][0]['datos'][0]['dato']
+        print(rate_str)
+        if rate_str == 'N/E':
+            raise ValueError("Exchange rate not available (N/E)")
+        return float(rate_str)
     else:
         print("Error to obtain exchange rate", response.status_code)
         return None
@@ -32,4 +36,5 @@ def get_location(ip):
     }
 
 if __name__ == "__main__":
+    print(get_exchange_rate("6f5b2f77293704ac3381d84d7d1483073970c091c12ed28ece5a5a87b5f633b1"))
     print(get_location("8.8.8.8"))

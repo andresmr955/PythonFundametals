@@ -1,9 +1,9 @@
 import unittest
 from dotenv import load_dotenv
-from src.bank_account import BankAccount
-from src.exchange_api import is_api_available
-from unittest.mock import patch
-from src.exceptions import WithdrawalTimeRestrictionError, WithdrawalDayTimeRestrictionError
+from bankaccount.src.bank_account import BankAccount
+from bankaccount.src.exchange_api import is_api_available
+from unittest.mock import patch, Mock
+from bankaccount.src.exceptions import WithdrawalTimeRestrictionError, WithdrawalDayTimeRestrictionError
 import sys
 import os
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
@@ -35,30 +35,31 @@ class BankAccountTest(unittest.TestCase):
           
           new_balance = self.account.deposit(410)
           assert new_balance == 1410
-
+    
     def test_withdraw_decreases_balance(self):
          
          new_balance = self.account.withdraw(400)
          assert new_balance == 600
     
-    @patch("src.bank_account.datetime")     
+    @patch("bankaccount.src.bank_account.datetime")     
     def test_withdrawal_during_business_hours(self, mock_datetime):
-        mock_now = unittest.mock.Mock()
+        mock_now = Mock()
         mock_now.hour = 10
-        mock_datetime.now.return_value = mock_now.hour
+        mock_datetime.now.return_value = mock_now
         new_balance = self.account.withdraw(100)
         self.assertEqual(new_balance, 900)
 
-    @patch("src.bank_account.datetime")     
+    @patch("bankaccount.src.bank_account.datetime")     
     def test_withdrawal_disallow_before_business_hours(self, mock_datetime):
-        mock_now = unittest.mock.Mock()
+        mock_now = Mock()
         mock_now.hour = 7
-        mock_datetime.now.return_value.hour = mock_now
+        mock_now.isoweekday.return_value = 2
+        mock_datetime.now.return_value = mock_now
 
         with self.assertRaises(WithdrawalTimeRestrictionError):
             self.account.withdraw(100)
     
-    @patch("src.bank_account.datetime")
+    @patch("bankaccount.src.bank_account.datetime")
     def test_withdrawal_allow_in_business_days(self, mock_datetime):
         mock_now = unittest.mock.Mock()
         mock_now.hour = 10
@@ -67,7 +68,7 @@ class BankAccountTest(unittest.TestCase):
         new_balance = self.account.withdraw(400)
         self.assertEqual(new_balance, 600)
 
-    @patch("src.bank_account.datetime")
+    @patch("bankaccount.src.bank_account.datetime")
     def test_withdrawal_disallow_in_not_business_days(self, mock_datetime):
         mock_now = unittest.mock.Mock()
         mock_now.hour = 10
@@ -140,11 +141,11 @@ class BankAccountTest(unittest.TestCase):
         self.assertTrue(found_log_message, f"Log message not found '{expected_message}'")
 
     @unittest.skipUnless(is_api_available(os.getenv("BANXICO_API_KEY")), "API is not available")
-    @patch('src.exchange_api.get_exchange_rate')
+    @patch('bankaccount.src.bank_account.get_exchange_rate')
     def test_convert_to_usd(self, mock_get_exchange_rate):
         mock_get_exchange_rate.return_value = 20
         cad_balance = self.account.convert_to_cad(self.api)
-        self.assertAlmostEqual( cad_balance, 71.8) 
+        self.assertAlmostEqual( cad_balance, 50.0) 
         #print(f' => {cad_balance}')
 
     def test_deposit_many_amounts(self):
