@@ -1,10 +1,10 @@
 
 
-from exchange_api import get_exchange_rate
+from bankaccount.src.exchange_api import get_exchange_rate
 import os
 from datetime import datetime
 from dotenv import load_dotenv
-from exceptions import WithdrawalDayTimeRestrictionError, WithdrawalTimeRestrictionError
+from bankaccount.src.exceptions import WithdrawalDayTimeRestrictionError, WithdrawalTimeRestrictionError
 
 load_dotenv()
 
