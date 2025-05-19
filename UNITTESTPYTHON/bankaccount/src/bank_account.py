@@ -25,7 +25,7 @@ class BankAccount:
         >>> account.log_transaction("Test message")
         >>> with open(temp_file) as f:
         ...    print(f.read().strip())
-        
+        Created account
         Test message
         >>> os.remove(temp_file)
         """
@@ -34,11 +34,22 @@ class BankAccount:
                 f.write(f"{message}\n")
 
     def deposit(self, amount):
+        """
+        >>> account = BankAccount()
+        >>> account.deposit(1000)
+        1000
 
-        
-        if amount > 0:
-            self.balance += amount
-            self.log_transaction(f"Deposited {amount}. New balance: {self.balance}")
+        >>> account = BankAccount()
+        >>> account.deposit(400)
+        Traceback (most recent call last):
+            ...
+        ValueError: Deposit amount must be positive
+        """
+
+        if amount <= 0:
+            raise ValueError("Deposit amount must be positive")
+        self.balance += amount
+        self.log_transaction(f"Deposited {amount}. New balance: {self.balance}")
         return self.balance
     
     def withdraw(self, amount):
