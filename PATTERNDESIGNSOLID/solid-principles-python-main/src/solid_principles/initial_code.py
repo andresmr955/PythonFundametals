@@ -23,6 +23,7 @@ class PaymentProcessor:
 
         stripe.api_key = os.getenv("STRIPE_API_KEY")
 
+        print(stripe.api_key)
         try:
             charge = stripe.Charge.create(
                 amount=payment_data["amount"],
