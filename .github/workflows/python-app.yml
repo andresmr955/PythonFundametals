@@ -30,7 +30,10 @@ jobs:
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
     - name: Set PYTHONPATH environment variable
       run: echo "PYTHONPATH=$(pwd)" >> $GITHUB_ENV
-      
+
+    - name: Set BANXICO_API_KEY environment variable
+      run: echo "BANXICO_API_KEY=70f538c5640de91230e47526fb41d8c92536655d05c994afceb4bc7612789291" >> $GITHUB_ENV
+  
     - name: Test with unittest
       run: |
         python -m unittest discover -s UNITTESTPYTHON/bankaccount/tests
