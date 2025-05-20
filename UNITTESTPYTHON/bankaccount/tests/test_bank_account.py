@@ -23,7 +23,7 @@ class BankAccountTest(unittest.TestCase):
         api_key = os.getenv("BANXICO_API_KEY")
         self.assertTrue(api_key and len(api_key) > 0, "Falta la API key para Banxico")
 
-    def _count_lines(self,fiename):
+    def _count_lines(self,filename):
         with open(filename, "r") as f:
             return len(f.readlines())
         
