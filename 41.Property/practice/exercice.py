@@ -41,6 +41,8 @@ print(my_prod.product_price)  # ✅ sin paréntesis
 print(my_prod.product_stock)
 
 # Change values
+#my_prod.product_price = -400
+
 my_prod.product_price = 300
 my_prod.product_stock = 10
 
