@@ -1,14 +1,28 @@
 from django.db import models
+from django.utils.text import slugify
 
 # Create your models here.
 class Car(models.Model):
     title = models.TextField(max_length=250,null=True)
     year = models.TextField(max_length=4, null=True)
     color = models.TextField(max_length=50, null=True)
+   
+    slug = models.SlugField(unique=True, blank=True)
 
-    def __str__(self):
-        return f"{self.title} - {self.year} - {self.color}"
-    
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = slugify(self.title)
+            
+            # Verificar si el slug ya existe y agregar un sufijo para hacerlo único
+            original_slug = self.slug
+            counter = 1
+            while Car.objects.filter(slug=self.slug).exists():
+                self.slug = f"{original_slug}-{counter}"
+                counter += 1
+
+        super().save(*args, **kwargs)
+
+
 
 class Publisher(models.Model):
     name = models.TextField(max_length=200)
@@ -37,3 +51,8 @@ class Book(models.Model):
     def __str__(self):
         return self.title
     
+class Moto(models.Model):
+    title = models.CharField(max_length=50, null=True)
+
+    def __str__(self):
+        return self.title

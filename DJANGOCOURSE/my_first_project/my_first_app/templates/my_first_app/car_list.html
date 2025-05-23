@@ -8,24 +8,30 @@
 <body>
     <h1>    This is a car list</h1>
     <ul>
-        <table>
-            <tr>
-                <th>TITLE</th>
-                {% comment %} <th>MODEL</th> {% endcomment %}
-                <th>YEAR</th>
-                <th>COLOR</th>
-            </tr>
-            
-           
-            {% for car in car_list %}
-             <tr>
-                <td>{{car.title}}</td>
-                {% comment %} <td>{{car.model}}</td> {% endcomment %}
-                <td>{{car.year}}</td>
-                <td>{{car.color}}</td>
-            </tr>
-            {% endfor %}
-        </table>
+                {% if message %}
+                <p>{{ message }}</p>
+                {% endif %}
+
+        {% if car_list %}
+            <table>
+                <tr>
+                    <th>Title</th>
+                    <th>Year</th>
+                    <th>Color</th>
+                    <th>Slug</th>
+                </tr>
+                {% for car in car_list %}
+                    <tr>
+                        <td>{{ car.title }}</td>
+                        <td>{{ car.year }}</td>
+                        <td>{{ car.color }}</td>
+                        <td>{{ car.slug }}</td>
+                    </tr>
+                {% endfor %}
+            </table>
+        {% else %}
+            <p>No cars available.</p>
+        {% endif %}
     </ul>
 
 </body>
