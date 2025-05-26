@@ -1,0 +1,23 @@
+<!-- product_detail.html -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalles del Producto</title>
+    <!-- Aquí puedes agregar tu CSS -->
+</head>
+<body>
+    <article class="item">
+        <h2 class="flavor">{{ product.name }}</h2>
+        <p class="price">${{ product.price }}</p>
+        <p class="description">{{ product.description }}</p>
+
+        {% if product.photo %}
+            <img src="{{ product.photo.url }}" alt="{{ product.name }}" class="product-photo">
+        {% else %}
+            <p>No image available</p>
+        {% endif %}
+    </article>
+</body>
+</html>

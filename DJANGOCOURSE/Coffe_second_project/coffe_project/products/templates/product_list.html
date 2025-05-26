@@ -1,0 +1,8 @@
+{% for product in products %}
+    <div>
+        <h3>{{ product.name }}</h3>
+        <p>{{ product.description }}</p>
+        <p>Precio: ${{ product.price }}</p>
+        <img src="{{ product.photo.url }}" alt="{{ product.name }}">
+    </div>
+{% endfor %}
