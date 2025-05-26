@@ -28,6 +28,12 @@ def my_view_cars(request, slug=None):
         
     return render(request, "my_first_app/car_list.html", context)
 
+def my_view_base(request):
+      
+     context = {
+          "welcome_message": "Welcome to my site!",
+     }
+     return render(request, 'my_first_app/home.html', context)
 
 def my_view_two(request, *args, **kwargs):
     print(args)

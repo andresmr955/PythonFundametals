@@ -1,13 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=E, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <h1>    This is a car list</h1>
-    <ul>
+{% extends "my_first_app/base.html" %}
+
+{% block title %}This is a car list{% endblock %}
+{% block header %}
+    <h2>Carros en Inventario</h2>
+{% endblock %}
+{% block content%}
+   
                 {% if message %}
                 <p>{{ message }}</p>
                 {% endif %}
@@ -32,7 +30,5 @@
         {% else %}
             <p>No cars available.</p>
         {% endif %}
-    </ul>
 
-</body>
-</html>
+{% endblock %}
