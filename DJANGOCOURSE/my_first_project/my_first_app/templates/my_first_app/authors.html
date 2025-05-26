@@ -12,12 +12,14 @@
                 <td>ID</td>
                 <td>NAME</td>
                 <td>BIRTHDAY</td>
+                <td>SLUG</td>
             </tr>
             {% for author in authors_list %}
             <tr>
                 <td>{{author.id}}</td>
                 <td>{{author.name}}</td>
                 <td>{{author.birth_date}}</td>
+                <td>{{author.slug_author}}</td>
             </tr>
             {%endfor%}
         </table>

@@ -32,9 +32,23 @@ class Publisher(models.Model):
         return self.name
 
 class Author(models.Model):
-    name= models.TextField(max_length=200)
+    name = models.TextField(max_length=200)
     birth_date = models.DateField()
+    slug_author = models.SlugField(unique=True, blank=True, null=True)
     
+    def save(self, *args, **kwargs):
+        if not self.slug_author:
+            self.slug_author = slugify(self.name)
+
+            counter = 1
+            original_slug = self.slug_author
+            while Author.objects.filter(slug_author = self.slug_author).exclude(pk=self.pk).exists():
+                self.slug_author = f"{original_slug}-{counter}"
+                counter += 1
+
+        super().save(*args, **kwargs)
+    
+
     def __str__(self):
         return self.name
 

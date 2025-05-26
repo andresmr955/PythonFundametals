@@ -36,8 +36,20 @@ def print_my_name(request):
     name = "Andres Marquez"
     return render(request, 'my_first_app/index.html', {'name': name})
 
-def view_authors(request):
-    authors_list = Author.objects.all()
+def view_authors(request, slug=None):
+    if slug: 
+        authors_list = Author.objects.filter(slug_author = slug)
+        if not authors_list:
+              authors_list = []
+              message = "No authors found"
+
+              message = "No authors"
+        else: 
+              message = None
+    else:
+    
+        authors_list = Author.objects.all()
+        message = None
     context = {
         "authors_list": authors_list
     }
