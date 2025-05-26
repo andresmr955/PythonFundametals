@@ -18,6 +18,7 @@ Including another URLconf
 from django.urls import path
 from . import views
 
+
 urlpatterns = [
     path("listed/", views.my_view_cars, name="car_list"),
     path('listed/<slug:slug>/', views.my_view_cars, name="car_list_slug"),
@@ -27,6 +28,7 @@ urlpatterns = [
     path('name_creator/', views.print_my_name, name="print_my_name"),
     
     path('authors/<slug:slug>/', views.author_detail, name="author_detail"),
-    path('authors/', views.view_authors, name="view_authors_list"),
+    # path('authors/', views.view_authors, name="view_authors_list"),
+    path('authors/', views.AuthorsListView.as_view(), name = "view_authors_list"),
 
 ]

@@ -1,6 +1,8 @@
 from django.http import HttpResponse
 from django.shortcuts import render, get_object_or_404
 from my_first_app.models import Car, Author
+from django.views.generic import TemplateView
+
 
 # Create your views here.
 def my_view_cars(request, slug=None):
@@ -36,20 +38,32 @@ def print_my_name(request):
     name = "Andres Marquez"
     return render(request, 'my_first_app/index.html', {'name': name})
 
-def view_authors(request):
-    authors_list = Author.objects.all()
-    message = None
+# def view_authors(request):
+#     authors_list = Author.objects.all()
+#     message = None
 
-    if not authors_list:
+#     if not authors_list:
               
-              message = "No authors found"
-    context = {
-        "authors_list": authors_list,
-        "message": message,
-    }
+#               message = "No authors found"
+#     context = {
+#         "authors_list": authors_list,
+#         "message": message,
+#     }
 
-    return render(request, 'my_first_app/authors.html', context)
+#     return render(request, 'my_first_app/authors.html', context)
 
+class AuthorsListView(TemplateView):
+     template_name = 'my_first_app/authors.html'
+
+     def get_context_data(self, **kwargs):
+          context = super().get_context_data(**kwargs)
+          authors_list = Author.objects.all()
+
+          context["authors_list"] = authors_list
+          if not authors_list.exists():
+               context["message"] = "No authors found"
+          return context
+     
 def author_detail(request, slug):
     author = get_object_or_404(Author, slug_author=slug)
     return render(request, 'my_first_app/profile.html', {"author": author})
