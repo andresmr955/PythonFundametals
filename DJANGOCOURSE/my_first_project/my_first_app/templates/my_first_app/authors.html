@@ -7,7 +7,13 @@
     </head>
     <body>
         <h1>Authors</h1>
-        <table>
+
+            {% if message %}
+                <p>{{ message }}</p>
+                {% endif %}
+
+        {%if authors_list%}
+            <table>
             <tr>
                 <td>ID</td>
                 <td>NAME</td>
@@ -22,6 +28,10 @@
                 <td>{{author.slug_author}}</td>
             </tr>
             {%endfor%}
-        </table>
+            </table>
+        {% else %}
+            <p>No authors available.</p>
+        {% endif %}
+        
     </body>
 </html>

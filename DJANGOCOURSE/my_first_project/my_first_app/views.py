@@ -43,7 +43,6 @@ def view_authors(request, slug=None):
               authors_list = []
               message = "No authors found"
 
-              message = "No authors"
         else: 
               message = None
     else:
@@ -51,7 +50,8 @@ def view_authors(request, slug=None):
         authors_list = Author.objects.all()
         message = None
     context = {
-        "authors_list": authors_list
+        "authors_list": authors_list,
+        "message": message,
     }
 
     return render(request, 'my_first_app/authors.html', context)
