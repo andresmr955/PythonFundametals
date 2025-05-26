@@ -26,7 +26,7 @@ urlpatterns = [
     path("brand/<str:id>", views.my_view_two, name="brand"),
     path('name_creator/', views.print_my_name, name="print_my_name"),
     
-    path('authors/<slug:slug>/', views.view_authors, name="view_authors"),
-    path('authors/', views.view_authors, name="view_authors"),
+    path('authors/<slug:slug>/', views.author_detail, name="author_detail"),
+    path('authors/', views.view_authors, name="view_authors_list"),
 
 ]

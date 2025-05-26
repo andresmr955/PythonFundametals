@@ -35,7 +35,9 @@ class Author(models.Model):
     name = models.TextField(max_length=200)
     birth_date = models.DateField()
     slug_author = models.SlugField(unique=True, blank=True, null=True)
-    
+    biography = models.TextField(max_length=500, null=True, blank=True)
+    website = models.URLField(max_length=200, blank=True)
+
     def save(self, *args, **kwargs):
         if not self.slug_author:
             self.slug_author = slugify(self.name)

@@ -1,5 +1,5 @@
 from django.http import HttpResponse
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from my_first_app.models import Car, Author
 
 # Create your views here.
@@ -36,22 +36,20 @@ def print_my_name(request):
     name = "Andres Marquez"
     return render(request, 'my_first_app/index.html', {'name': name})
 
-def view_authors(request, slug=None):
-    if slug: 
-        authors_list = Author.objects.filter(slug_author = slug)
-        if not authors_list:
-              authors_list = []
-              message = "No authors found"
+def view_authors(request):
+    authors_list = Author.objects.all()
+    message = None
 
-        else: 
-              message = None
-    else:
-    
-        authors_list = Author.objects.all()
-        message = None
+    if not authors_list:
+              
+              message = "No authors found"
     context = {
         "authors_list": authors_list,
         "message": message,
     }
 
     return render(request, 'my_first_app/authors.html', context)
+
+def author_detail(request, slug):
+    author = get_object_or_404(Author, slug_author=slug)
+    return render(request, 'my_first_app/profile.html', {"author": author})
