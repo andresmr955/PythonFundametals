@@ -3,23 +3,23 @@ from .forms import ProductForm
 from .models import Product  # Importa el modelo Product
 from django.urls import reverse_lazy
 from django.views.generic.edit import FormView
-
+from django.views.generic import ListView
 
 # Create your views here.
-def home(request):
-    return render(request, 'base.html')
+# def home(request):
+#     return render(request, 'base.html')
 
 def product_detail(request):
     product = Product.objects.first()  # O usa algún filtro si tienes más de un producto
-    return render(request, 'base.html', {'product': product})
+    return render(request, 'menu.html', {'product': product})
 
+def main(request):
+    return render(request, 'main.html')
 
-def product_list(request):
-    products = Product.objects.all
-    context = {
-        "products": products
-    }
-    return render(request, 'product_list.html', context )
+class ProductListView(ListView):
+    model = Product
+    template_name = 'product_list.html'
+    context_object_name = 'products'
 
 class ProductFormView(FormView):
     template_name = 'add_product.html'
