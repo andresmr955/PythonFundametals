@@ -1,6 +1,9 @@
 from django.shortcuts import render, redirect
 from .forms import ProductForm
 from .models import Product  # Importa el modelo Product
+from django.urls import reverse_lazy
+from django.views.generic.edit import FormView
+
 
 # Create your views here.
 def home(request):
@@ -11,13 +14,11 @@ def product_detail(request):
     return render(request, 'base.html', {'product': product})
 
 
-def create_product(request):
-    if request.method == 'POST':
-        form = ProductForm(request.POST, request.FILES)
-        if form.is_valid():
-            form.save()  # Guardamos el nuevo producto en la base de datos
-            return redirect('success')  # Redirige a una página de éxito o lo que prefieras
-    else:
-        form = ProductForm()
-    
-    return render(request, 'create_product.html', {'form': form})
+class ProductFormView(FormView):
+    template_name = 'add_product.html'
+    form_class = ProductForm
+    success_url = reverse_lazy('add_product')
+
+    def form_valid(self, form):
+        form.save()
+        return super().form_valid(form)
