@@ -14,10 +14,17 @@ def product_detail(request):
     return render(request, 'base.html', {'product': product})
 
 
+def product_list(request):
+    products = Product.objects.all
+    context = {
+        "products": products
+    }
+    return render(request, 'product_list.html', context )
+
 class ProductFormView(FormView):
     template_name = 'add_product.html'
     form_class = ProductForm
-    success_url = reverse_lazy('add_product')
+    success_url = reverse_lazy('product_list')
 
     def form_valid(self, form):
         form.save()
