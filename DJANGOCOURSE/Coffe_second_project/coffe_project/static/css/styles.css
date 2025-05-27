@@ -106,10 +106,28 @@ a:visited {
     color: brown ;
   }
 
+
 article  .product-description {
     font-size: 1rem ;
     line-height: 1.6 ;
     color: #312b2b ;
-    margin-bottom: 1rem; 
     font-style: italic;
+    flex: 1;         /* toma todo el espacio posible */
+    text-align: left;
+
 }
+
+.description-photo{
+    display: flex;
+    justify-content: space-between;
+
+}
+.product-photo {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    max-width: 200px;  /* o el tamaño que prefieras */
+    height: auto;
+    /* para que no crezca más que su tamaño */
+    border-radius: 10px;
+}
+

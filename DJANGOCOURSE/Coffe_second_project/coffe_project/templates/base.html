@@ -20,13 +20,14 @@
             <article class="item">
               <!-- Muestra la información del producto -->
               <p class="flavor">{{ product.name }}</p><p class="price">${{ product.price }}</p>  <!-- Precio del producto -->
-              <p class="product-description">{{ product.description }}</p>  <!-- Descripción del producto -->
-
+              <div class="description-photo">
+                <p class="product-description">{{ product.description }}</p>
               {% if product.photo %}
                   <img src="{{ product.photo.url }}" alt="{{ product.name }}" class="product-photo">
               {% else %}
                   <p>No image available</p>
               {% endif %}
+              </div>
           </article>
           <article class="item">
             <p class="flavor">Caramel Macchiato</p><p class="price">3.75</p>
