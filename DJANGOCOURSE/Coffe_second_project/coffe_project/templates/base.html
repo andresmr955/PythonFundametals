@@ -17,18 +17,17 @@
         <section>
           <h2>Coffee</h2>
           <img src="https://cdn.freecodecamp.org/curriculum/css-cafe/coffee.jpg" alt="coffee icon">
-          <article class="item">
-            <!-- Muestra la información del producto -->
-            <p class="flavor">{{ product.name }}</p>  <!-- Nombre del producto -->
-            <p class="price">${{ product.price }}</p>  <!-- Precio del producto -->
-            <p class="description">{{ product.description }}</p>  <!-- Descripción del producto -->
+            <article class="item">
+              <!-- Muestra la información del producto -->
+              <p class="flavor">{{ product.name }}</p><p class="price">${{ product.price }}</p>  <!-- Precio del producto -->
+              <p class="product-description">{{ product.description }}</p>  <!-- Descripción del producto -->
 
-            {% if product.photo %}
-                <img src="{{ product.photo.url }}" alt="{{ product.name }}" class="product-photo">
-            {% else %}
-                <p>No image available</p>
-            {% endif %}
-        </article>
+              {% if product.photo %}
+                  <img src="{{ product.photo.url }}" alt="{{ product.name }}" class="product-photo">
+              {% else %}
+                  <p>No image available</p>
+              {% endif %}
+          </article>
           <article class="item">
             <p class="flavor">Caramel Macchiato</p><p class="price">3.75</p>
             

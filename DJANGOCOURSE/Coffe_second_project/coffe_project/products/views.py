@@ -8,6 +8,7 @@ def home(request):
 
 def product_detail(request):
     product = Product.objects.first()  # O usa algún filtro si tienes más de un producto
+    print(product.name)
     return render(request, 'base.html', {'product': product})
 
 
