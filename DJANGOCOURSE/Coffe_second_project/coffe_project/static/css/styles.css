@@ -201,3 +201,33 @@ div.price-available > p{
     border-radius: 4px;
     
 }
+
+.logout-form{
+    display: inline-block;
+}
+
+.logout-form button {
+  background-color: #8B4513; /* marrón estilo café */
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.1s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+.logout-form button:hover {
+  background-color: #A0522D; /* tono más claro al pasar el mouse */
+  transform: scale(1.03);
+}
+
+.logout-form button:active {
+  transform: scale(0.97);
+}
+
+.btn-signin {
+  text-decoration: none;
+}

@@ -16,14 +16,22 @@
     <title>Document</title>
 </head>
 <body >
-        
-     Hello, 
-     {% if user.is_authenticated %}
-        {{user.name}}
-        <a href="{% url 'logout' %}">Logout</a>
-    {% else %}
-        <a href="{% url 'login'%}">Login</a>
-    {% endif %}
+     <nav>
+  <!-- otros enlaces -->
+  
+  {% if user.is_authenticated %}
+    <span>Hola, {{ user.username }}</span>
+    <form  method="post" action="{% url 'logout' %}" class="logout-form">
+      {% csrf_token %}
+      <button type="submit" >
+        Sign out
+      </button>
+    </form>
+  {% else %}
+    <a href="{% url 'login' %}" class="inline-block bg-amber-700 text-white px-6 py-2 rounded-lg font-semibold shadow-md hover:bg-yellow-700 hover:scale-105 active:scale-95 transition-transform btn-signin">Sign in</a>
+  {% endif %}
+</nav>
+
     <div class="content">
     
         {% block content %}
@@ -38,6 +46,6 @@
         </p>
         <p class="address">123 Free Code Camp Drive</p>
     </footer>
-     {% comment %} <script src="{% static 'js/login.js' %}"></script> {% endcomment %}
+     <script src="{% static 'js/login.js' %}"></script>
 </body>
 </html>
