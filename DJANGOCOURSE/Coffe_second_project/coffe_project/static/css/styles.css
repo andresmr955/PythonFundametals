@@ -91,21 +91,7 @@ footer{
 .address{
     margin-bottom: 5px;
 }
-a{
-    color: white;
-}
 
-a:visited {
-    color: black ;
-  }
-  
-  a:hover {
-    color: brown;
-  }
-  
-  a:active {
-    color: brown ;
-  }
 
 
 article  .product-description {
@@ -228,6 +214,29 @@ div.price-available > p{
   transform: scale(0.97);
 }
 
-.btn-signin {
+a{
   text-decoration: none;
+  color: black;
+}
+
+header{
+    margin-bottom: 20px;
+}
+
+nav a {
+  color: #7B3F00;          /* color café */
+  padding: 8px 12px;       /* espacio para clic más cómodo */
+  text-decoration: none;   /* quitar subrayado */
+  cursor: pointer;         /* cambia el cursor a mano */
+  display: inline-block;   /* para que el padding funcione bien */
+  transition: color 0.3s ease, background-color 0.3s ease; /* animación suave */
+  border-radius: 4px;      /* bordes ligeramente redondeados */
+}
+
+nav a:hover,
+nav a:focus {
+  color: #fff;             /* texto blanco al pasar el mouse o foco */
+  background-color: #633300; /* fondo café oscuro para feedback */
+  outline: none;           /* quita el borde azul del foco por defecto */
+  box-shadow: 0 0 0 3px rgba(99, 51, 0, 0.5); /* foco visible accesible */
 }
