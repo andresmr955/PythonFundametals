@@ -1,3 +1,5 @@
 from reports import generate_sales_report
 
-print(generate_sales_report('November', 804844))
+
+if __name__ == "__main__":
+    print(generate_sales_report('November', 804844))
