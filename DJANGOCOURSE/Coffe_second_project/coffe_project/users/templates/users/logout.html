@@ -1,0 +1,9 @@
+{% extends 'base.html'%}
+{% load tailwind_filters %}
+{% load static %}
+
+{% block content %}
+
+    <h2>Has cerrado sesión correctamente</h2>
+  <a href="{% url 'login' %}">Volver a iniciar sesión</a>
+{% endblock %} 

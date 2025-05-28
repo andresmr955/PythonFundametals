@@ -17,17 +17,20 @@
 </head>
 <body >
         
-    
+     Hello, 
+     {% if user.is_authenticated %}
+        {{user.name}}
+        <a href="{% url 'logout' %}">Logout</a>
+    {% else %}
+        <a href="{% url 'login'%}">Login</a>
+    {% endif %}
     <div class="content">
     
         {% block content %}
         {% endblock content %}
     
     </div>
-    <button class="btn btn-primary">
-  <span class="spinner-border spinner-border-sm"></span>
-  Loading..
-</button>
+    
     <footer>
         <p>
             <a href="https://www.freecodecamp.org" target="_blank">Visit our website</a>
@@ -35,5 +38,6 @@
         </p>
         <p class="address">123 Free Code Camp Drive</p>
     </footer>
+     {% comment %} <script src="{% static 'js/login.js' %}"></script> {% endcomment %}
 </body>
 </html>

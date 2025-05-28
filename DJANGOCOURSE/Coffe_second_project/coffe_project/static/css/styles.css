@@ -155,6 +155,7 @@ article  .product-description {
 
 .content{
     flex: 1;
+   
 }
 
 
@@ -186,4 +187,17 @@ div.price-available > p{
 
 .name-product{
     font-size: 1.9rem;
+}
+
+.login-title{
+    color: white;
+}
+
+#login-form{
+     color: white;
+}
+
+.content-login-form{
+    border-radius: 4px;
+    
 }
