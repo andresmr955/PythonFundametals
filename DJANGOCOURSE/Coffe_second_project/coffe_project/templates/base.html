@@ -65,6 +65,12 @@
                     <form  method="post" action="{% url 'logout' %}" class="logout-form">
                         {% csrf_token %}
                         <button type="submit" >Sign out</button>
+                        <button type="submit" >Make Order</button>
+                    </form>
+                    <form  method="post" action="{% url 'logout' %}" class="logout-form">
+                        {% csrf_token %}
+                        
+                        <button type="submit" >Make Order</button>
                     </form>
                 {% else %}
                 <div class="sm:flex sm:gap-4">
@@ -74,13 +80,14 @@
                 >
                     Login
                 </a>
-                {% endif %}
                 <a
                     class="hidden rounded-md bg-gray-100 px-5 py-2.5 text-sm font-medium text-teal-600 transition hover:text-teal-600/75 sm:block"
                     href="#"
                 >
                     Register
                 </a>
+                {% endif %}
+                
                 </div>
 
                 <button
