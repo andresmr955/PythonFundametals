@@ -5,10 +5,11 @@
     <form method="post" class="max-w-md mx-auto p-6 bg-white shadow-md rounded-md">
         {% csrf_token %}
         {{ form|crispy }}
-
-        <button type="submit"
-            class="mt-4 w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded">
-            Sign in
-        </button>
+        <div class="mt-4 flex justify-center">
+            <button type="submit"
+                class="inline-block bg-yellow-500 hover:bg-yellow-600 text-white text-sm font-medium px-4 py-2 rounded transition-colors duration-300 ">
+                Sign in
+            </button>
+        </div>
     </form>
 {% endblock content %}
