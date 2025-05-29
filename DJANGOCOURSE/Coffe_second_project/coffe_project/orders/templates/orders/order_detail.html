@@ -1,0 +1,9 @@
+<h3>Order details {{ order.id }}</h3>
+<p>Order status: {{ order.order_status }}</p>
+<p>Date: {{ order.order_date }}</p>
+
+<ul>
+    {% for order_product in order.order_products.all %}
+        <li>{{ order_product.product.name }} x {{ order_product.quantity }} - {{ order_product.product.price }}$</li>
+    {% endfor %}
+</ul>

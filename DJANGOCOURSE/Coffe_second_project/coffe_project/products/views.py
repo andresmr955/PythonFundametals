@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, get_object_or_404
 from .forms import ProductForm
 from .models import Product  # Importa el modelo Product
 from django.urls import reverse_lazy

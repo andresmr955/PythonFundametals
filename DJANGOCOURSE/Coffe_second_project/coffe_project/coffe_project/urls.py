@@ -26,6 +26,7 @@ urlpatterns = [
     # path('', views.home, name="home"),
     path('products/', include('products.urls')),
     path('users/', include('users.urls')),
+    path('orders/', include('orders.urls')),
 ]
 
 
