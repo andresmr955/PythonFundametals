@@ -2,7 +2,9 @@
 {% load tailwind_filters %}
 {% load static %}
 {% block content %}
+   
     <form method="post" class="max-w-md mx-auto p-6 bg-white shadow-md rounded-md">
+        <h2> </h2>
         {% csrf_token %}
         {{ form|crispy }}
         <div class="mt-4 flex justify-center">
