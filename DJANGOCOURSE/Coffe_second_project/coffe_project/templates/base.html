@@ -73,17 +73,14 @@
                             <button type="submit" >Sign out</button>
                         </form>
                     {% else %}
-                    <div class="sm:flex sm:gap-4">
+                    <div class="sm:flex sm:justify-center sm:gap-4">
                         <a
                             class="block rounded-md bg-yellow-600 px-5 py-2.5 text-sm font-medium text-white transition hover:bg-yellow-700"
                             href="{% url 'login' %}"
                         >
                             Login
                         </a>
-                        
-
                         {% endif %}
-                        
                     </div>
 
                     <button
