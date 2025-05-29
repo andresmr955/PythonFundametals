@@ -63,12 +63,12 @@
                     {% if user.is_authenticated %}
 
                         
-                        <form  method="post" action="{% url 'logout' %}" class="logout-form">
+                        <form  method="post" action="{% url 'users:logout' %}" class="logout-form">
                             {% csrf_token %}
                             
                             <button type="submit" >Make Order</button>
                         </form>
-                        <form  method="post" action="{% url 'logout' %}" class="logout-form">
+                        <form  method="post" action="{% url 'users:logout' %}" class="logout-form">
                             {% csrf_token %}
                             <button type="submit" >Sign out</button>
                         </form>
@@ -76,7 +76,7 @@
                     <div class="sm:flex sm:justify-center sm:gap-4">
                         <a
                             class="block rounded-md bg-yellow-600 px-5 py-2.5 text-sm font-medium text-white transition hover:bg-yellow-700"
-                            href="{% url 'login' %}"
+                            href="{% url 'users:login' %}"
                         >
                             Login
                         </a>
@@ -107,6 +107,7 @@
     <div class="content">
     
         {% block content %}
+        
         {% endblock content %}
     
     </div>

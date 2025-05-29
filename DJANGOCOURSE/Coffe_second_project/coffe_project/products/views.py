@@ -10,7 +10,7 @@ from django.views.generic import ListView
 #     return render(request, 'base.html')
 
 def product_detail(request):
-    product = Product.objects.first()  # O usa algún filtro si tienes más de un producto
+    product = Product.objects.first()  
     return render(request, 'menu.html', {'product': product})
 
 def main(request):
@@ -24,7 +24,7 @@ class ProductListView(ListView):
 class ProductFormView(FormView):
     template_name = 'add_product.html'
     form_class = ProductForm
-    success_url = reverse_lazy('product_list')
+    success_url = reverse_lazy('products:product_list')
 
     def form_valid(self, form):
         form.save()

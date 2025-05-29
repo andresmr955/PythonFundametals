@@ -6,20 +6,19 @@
     <h1 class="text-4xl font-bold text-gray-800 mb-8 main-title">Welcome to Andres Coffee Store ☕</h1>
 
     <div class="space-y-4" >
-      <!-- Menú Estático -->
-      <a href="{% url 'product_menu' %}" 
+      
+      <a href="{% url 'products:product_menu' %}" 
          class="block w-60 mx-auto py-3 px-6 bg-yellow-400 text-white font-semibold rounded-lg hover:bg-yellow-500 transition">
         See Menu
       </a>
 
-      <!-- Menú para Comprar (productos desde la DB) -->
-      <a href="{% url 'product_list' %}" 
+      
+      <a href="{% url 'products:product_list' %}" 
          class="block w-60 mx-auto py-3 px-6 bg-green-500 text-white font-semibold rounded-lg hover:bg-green-600 transition">
         Buy Products
       </a>
 
-      <!-- Agregar Producto -->
-      <a href="{% url 'add_product' %}" 
+      <a href="{% url 'products:add_product' %}" 
          class="block w-60 mx-auto py-3 px-6 bg-blue-500 text-white font-semibold rounded-lg hover:bg-blue-600 transition">
         Add product
       </a>
