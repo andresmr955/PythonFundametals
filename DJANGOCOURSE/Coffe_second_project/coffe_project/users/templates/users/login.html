@@ -24,6 +24,15 @@
                     <span id="btn-text" class="relative text-sm font-medium text-yellow-600 transition-colors group-hover:text-white"> Login </span>
                     <span id="btn-spinner" class="spinner-border spinner-border-sm hidden"></span>
                 </button>
+
+                <div class="text-center mt-4">
+                    <p class="text-sm text-gray-600">
+                        Don't have an account?
+                        <a href="{% url 'register' %}" class="text-blue-600 hover:underline font-medium">
+                            Sign up
+                        </a>
+                    </p>
+                </div>
             </form>
         </div>
     </div>

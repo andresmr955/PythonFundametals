@@ -29,83 +29,79 @@
                 </svg>
                 </a>
 
-            <div class="flex flex-1 items-center justify-end md:justify-between">
-            <nav aria-label="Global" class="hidden md:block">
-                <ul class="flex items-center gap-6 text-sm">
-                <li>
-                    <a class=" text-[#7B3F00] transition hover:text-[#633300] nav-links" href="#"> About </a>
-                </li>
+            <div class="mx-auto flex h-16 max-w-screen-xl items-center justify-between gap-8 px-4 sm:px-6 lg:px-8">
+                <nav aria-label="Global" class="hidden md:block">
+                            <ul class="flex items-center gap-6 text-sm">
+                                <li >
+                                    <a class=" text-[#7B3F00]  hover:text-[#633300] nav-links transition py-2"  href="#"> About </a>
+                                </li>
 
-                <li>
-                    <a class=" text-[#7B3F00] transition hover:text-[#633300] nav-links" href="#"> Careers </a>
-                </li>
+                                <li>
+                                    <a class=" text-[#7B3F00]  hover:text-[#633300] nav-links transition py-2"  href="#"> Careers </a>
+                                </li>
 
-                <li>
-                    <a class=" text-[#7B3F00] transition hover:text-[#633300] nav-links" href="#"> History </a>
-                </li>
+                                <li>
+                                    <a class=" text-[#7B3F00]  hover:text-[#633300] nav-links transition py-2"  href="#"> History </a>
+                                </li>
 
-                <li>
-                    <a class=" text-[#7B3F00] transition hover:text-[#633300] nav-links" href="#"> Services </a>
-                </li>
+                                <li>
+                                    <a class=" text-[#7B3F00]  hover:text-[#633300] nav-links transition py-2"  href="#"> Services </a>
+                                </li>
 
-                <li>
-                    <a class=" text-[#7B3F00] transition hover:text-[#633300] nav-links" href="#"> Projects </a>
-                </li>
+                                <li>
+                                    <a class=" text-[#7B3F00]  hover:text-[#633300] nav-links transition py-2"  href="#"> Projects </a>
+                                </li>
 
-                <li>
-                    <a class=" text-[#7B3F00] transition hover:text-[#633300] nav-links" href="#"> Blog </a>
-                </li>
-                </ul>
-            </nav>
-
-            <div class="flex items-center gap-4">
-                
-                {% if user.is_authenticated %}
-   
-                    <form  method="post" action="{% url 'logout' %}" class="logout-form">
-                        {% csrf_token %}
-                        <button type="submit" >Sign out</button>
-                        <button type="submit" >Make Order</button>
-                    </form>
-                    <form  method="post" action="{% url 'logout' %}" class="logout-form">
-                        {% csrf_token %}
+                                <li>
+                                    <a class=" text-[#7B3F00]  hover:text-[#633300] nav-links transition py-2"  href="#"> Blog </a>
+                                </li>
+                            </ul>
                         
-                        <button type="submit" >Make Order</button>
-                    </form>
-                {% else %}
-                <div class="sm:flex sm:gap-4">
-                <a
-                    class="block rounded-md bg-yellow-600 px-5 py-2.5 text-sm font-medium text-white transition hover:bg-yellow-700"
-                    href="{% url 'login' %}"
-                >
-                    Login
-                </a>
-                <a
-                    class="hidden rounded-md bg-gray-100 px-5 py-2.5 text-sm font-medium text-teal-600 transition hover:text-teal-600/75 sm:block"
-                    href="#"
-                >
-                    Register
-                </a>
-                {% endif %}
-                
-                </div>
+                </nav>            
+                <div class="flex items-center gap-4">
+                    
+                    {% if user.is_authenticated %}
 
-                <button
-                class="block rounded-sm bg-gray-100 p-2.5 text-gray-600 transition hover:text-gray-600/75 md:hidden"
-                >
-                <span class="sr-only">Toggle menu</span>
-                <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    class="size-5"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                    stroke-width="2"
-                >
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
-                </svg>
-                </button>
-            </div>
+                        
+                        <form  method="post" action="{% url 'logout' %}" class="logout-form">
+                            {% csrf_token %}
+                            
+                            <button type="submit" >Make Order</button>
+                        </form>
+                        <form  method="post" action="{% url 'logout' %}" class="logout-form">
+                            {% csrf_token %}
+                            <button type="submit" >Sign out</button>
+                        </form>
+                    {% else %}
+                    <div class="sm:flex sm:gap-4">
+                        <a
+                            class="block rounded-md bg-yellow-600 px-5 py-2.5 text-sm font-medium text-white transition hover:bg-yellow-700"
+                            href="{% url 'login' %}"
+                        >
+                            Login
+                        </a>
+                        
+
+                        {% endif %}
+                        
+                    </div>
+
+                    <button
+                        class="block rounded-sm bg-gray-100 p-2.5 text-gray-600 transition hover:text-gray-600/75 md:hidden"
+                        >
+                        <span class="sr-only">Toggle menu</span>
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            class="size-5"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                            stroke-width="2"
+                        >
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                </div>      
             </div>
         </div>
     </header>
