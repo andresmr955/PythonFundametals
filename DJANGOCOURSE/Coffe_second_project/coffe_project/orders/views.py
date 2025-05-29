@@ -17,7 +17,7 @@ def create_order(request, product_id):
 
     order = Order.objects.filter(user=request.user, order_status='pending').first()
     print(f"Orden creada o recuperada: {order.id}")
-    
+
     if not order:
         order = Order.objects.create(user=request.user, order_status='pending')
     
@@ -32,6 +32,7 @@ def create_order(request, product_id):
     
     return redirect('orders:order_detail', order_id=order.id)
 
+
 @login_required
 def order_detail(request, order_id):
     order = get_object_or_404(Order, id=order_id)
@@ -40,4 +41,12 @@ def order_detail(request, order_id):
     if order.user != request.user:
         return redirect('orders:order_list')
     
-    return render(request, 'orders/order_detail.html', {'order': order})
+    total = 0
+    for order_product in order.order_products.all():
+        total += order_product.product.price * order_product.quantity
+
+    context = {
+        'order': order,
+        'total': total, # Pass the calculated total to the template
+    }
+    return render(request, 'orders/order_detail.html', context)
