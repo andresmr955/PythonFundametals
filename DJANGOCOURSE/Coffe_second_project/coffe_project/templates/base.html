@@ -62,8 +62,8 @@
                     
                     {% if user.is_authenticated %}
 
-                        
-                        <form  method="post" action="{% url 'users:logout' %}" class="logout-form">
+                        {% comment %} action="{%  method="post" url 'users:logout' %}" {% endcomment %}
+                        <form   href="#"  class="logout-form">
                             
                             <button type="submit" >Make Order</button>
                         </form>
