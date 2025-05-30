@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
-from django.views.generic import TemplateView
+from django.views.generic import TemplateView, DetailView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views import View 
 from products.models import Product
@@ -42,8 +42,7 @@ class CreateOrderView(LoginRequiredMixin, View):
         if not order:
             order = Order.objects.create(user=request.user, order_status='pending')
         
-        return redirect('orders:order_detail', product_id=order.id)
-        
+     
     def post(self, request, product_id):
         order = Order.objects.filter(user=request.user, order_status='pending').first()
         product = get_object_or_404(Product, id=product_id)
@@ -60,19 +59,41 @@ class CreateOrderView(LoginRequiredMixin, View):
     def get(self, request, product_id):
         return self.get_redirect_order(request, product_id)
     
-@login_required
-def order_detail(request, product_id):
-    order = get_object_or_404(Order, id=product_id)
-    
-    if order.user != request.user:
-        return redirect('orders:order_list')
-    
-    total = 0
-    for order_product in order.order_products.all():
-        total += order_product.product.price * order_product.quantity
 
-    context = {
-        'order': order,
-        'total': total, # Pass the calculated total to the template
-    }
-    return render(request, 'orders/order_detail.html', context)
+# @login_required
+# def order_detail(request, product_id):
+#     order = get_object_or_404(Order, id=product_id)
+    
+#     if order.user != request.user:
+#         return redirect('orders:order_list')
+    
+#     total = 0
+#     for order_product in order.order_products.all():
+#         total += order_product.product.price * order_product.quantity
+
+#     context = {
+#         'order': order,
+#         'total': total, # Pass the calculated total to the template
+#     }
+#     return render(request, 'orders/order_detail.html', context)
+
+class OrderDetailView(LoginRequiredMixin, DetailView):
+    model = Order
+    template_name = 'orders/order_detail.html'
+    context_object_name = 'order'
+    pk_url_kwarg = 'product_id'
+
+
+    def get_object(self, queryset=None):
+        order = super().get_object(queryset)
+        if order.user != self.request.user:
+            return redirect('orders:order_list')
+        return order
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        order = context['order']
+        total = sum(item.product.price * item.quantity for item in order.order_products.all())
+
+        context['total'] = total
+        return context
