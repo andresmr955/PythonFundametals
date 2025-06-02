@@ -12,10 +12,11 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 
 from pathlib import Path
 import os
-
+import environ
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-
+env = environ.Env()
+environ.Env.read_env(os.path.join(BASE_DIR, ".env"))
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
@@ -84,13 +85,49 @@ WSGI_APPLICATION = 'coffe_project.wsgi.application'
 
 DATABASES = {
     'default': {
+         # ------------------------------------------------------------------
+        # ENGINE:
+        #   Specifies the database backend to use. For PostgreSQL, always use
+        #   'django.db.backends.postgresql'.
+        #   (Other options include 'django.db.backends.sqlite3', 'django.db.backends.mysql', etc.)
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'coffe_project_db',
-        'USER': 'andre',
-        'PASSWORD': 'fire1602',
-        'HOST': 'localhost',
+         # ------------------------------------------------------------------
+        # NAME:
+        #   The exact name of the database you want Django to connect to.
+        #   - If you left “DB name” blank when creating the RDS instance, the
+        #     default database is 'postgres'.
+        #   - If you created your own database (e.g., 'coffe_project_db'),
+        #     put that exact name here.
+        'NAME': 'postgres',
+         # HOST:
+        #   The hostname or endpoint of the database server.
+        #   - Locally, this is usually 'localhost' or '127.0.0.1'.
+        #   - For AWS RDS, use the Endpoint shown in the RDS console
+        #     (without the port). Example:
+        #     'db-course-django.cxm8aoyauzfm.us-east-2.rds.amazonaws.com'
+        'HOST': 'db-course-django.cxm8aoyauzfm.us-east-2.rds.amazonaws.com', #This is the Endpoint
+         # PORT:
+        #   The TCP port where PostgreSQL is listening.
+        #   - The default port for PostgreSQL is '5432', both locally and on RDS
+        #     (unless you explicitly changed it).
         'PORT': '5432',
+           # USER:
+        #   The database user that Django will use to authenticate.
+        #   Must match the “Master username” in RDS (or another role you created).
+        #   For example: 'db_postgres'
+        'USER': 'db_postgres', # Here is the Master username in RDS
+         # PASSWORD:
+        #   The password for the specified database user.
+        #   - On RDS, this is the “Master password” or the password you set
+        #     for that role.
+        #   - Locally, it’s whatever password you assigned when you created the role.
+        'PASSWORD': 'fire1602', #The password in aws 
+        
+        
     }
+
+    # 'default': env.db('DJANGO_DB_URL')
+    
 }
 
 
