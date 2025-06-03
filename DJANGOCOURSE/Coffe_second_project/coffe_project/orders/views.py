@@ -42,9 +42,13 @@ class CreateOrderView(LoginRequiredMixin, View):
         if not order:
             order = Order.objects.create(user=request.user, order_status='pending')
         
-     
+        return redirect('orders:order_detail', order_id=order.id)
+    
     def post(self, request, product_id):
         order = Order.objects.filter(user=request.user, order_status='pending').first()
+        if not order:
+            order = Order.objects.create(user=request.user, order_status='pending')
+
         product = get_object_or_404(Product, id=product_id)
         order_product = OrderProduct.objects.filter(order=order, product=product).first()
 
@@ -52,10 +56,10 @@ class CreateOrderView(LoginRequiredMixin, View):
             order_product.quantity += 1
             order_product.save()
         else:
-
             OrderProduct.objects.create(order=order, product=product, quantity=1)
+
         return self.get_redirect_order(request, product_id)
-    
+        
     def get(self, request, product_id):
         return self.get_redirect_order(request, product_id)
     
@@ -81,7 +85,7 @@ class OrderDetailView(LoginRequiredMixin, DetailView):
     model = Order
     template_name = 'orders/order_detail.html'
     context_object_name = 'order'
-    pk_url_kwarg = 'product_id'
+    pk_url_kwarg = 'order_id'
 
 
     def get_object(self, queryset=None):

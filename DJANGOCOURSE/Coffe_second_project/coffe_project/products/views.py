@@ -22,7 +22,6 @@ def menu(request):
     return render(request, 'menu.html', {'product': product})
 
 def main(request):
-    
     return render(request, 'main.html')
 
 class ProductListView(ListView):
