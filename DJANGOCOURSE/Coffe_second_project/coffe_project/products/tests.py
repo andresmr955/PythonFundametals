@@ -1,6 +1,7 @@
 from django.test import TestCase
 from django.urls import reverse
 from .models import Product
+
 # Create your tests here.
 
 # class ProductListTest(TestCase):
@@ -15,4 +16,3 @@ from .models import Product
 #         response = self.client.get(url)
 #         self.assertEqual(response.status_code, 200)
 #         self.assertEqual(response.context['products'].count(), 0)
-    

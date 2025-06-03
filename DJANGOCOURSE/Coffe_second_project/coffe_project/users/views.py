@@ -17,11 +17,12 @@ from django.urls import reverse_lazy
 #         form = RegisForm()
 #     return render(request, '', {'form': form})
 
+
 class RegisterView(CreateView):
     form_class = RegisForm
-    template_name = 'registration/register.html'
-    success_url = reverse_lazy('users:login')
-    
+    template_name = "registration/register.html"
+    success_url = reverse_lazy("users:login")
+
     def form_valid(self, form):
         user = form.save()
 

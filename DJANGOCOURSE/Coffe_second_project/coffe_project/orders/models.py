@@ -1,7 +1,7 @@
-
 from django.db import models
 from django.contrib.auth.models import User
 from products.models import Product
+
 
 # Create your models here.
 class Order(models.Model):
@@ -10,14 +10,18 @@ class Order(models.Model):
     order_date = models.DateField(auto_now_add=True)
     order_status = models.CharField(
         max_length=20,
-        choices=[('pending', 'pending'), ('completed', 'completed')],
-        default='pending'
+        choices=[("pending", "pending"), ("completed", "completed")],
+        default="pending",
     )
+
     def __str__(self):
         return f"order {self.id} by {self.user}"
 
+
 class OrderProduct(models.Model):
-    order = models.ForeignKey(Order, related_name='order_products', on_delete=models.CASCADE)
+    order = models.ForeignKey(
+        Order, related_name="order_products", on_delete=models.CASCADE
+    )
     product = models.ForeignKey(Product, on_delete=models.PROTECT)
     quantity = models.IntegerField()
 
