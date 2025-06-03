@@ -17,7 +17,12 @@ def product_detail(request, product_id):
     product = get_object_or_404(Product, pk=product_id)
     return render(request, 'product_detail.html', {'product': product})
 
+def menu(request):
+    product = Product.objects.first()
+    return render(request, 'menu.html', {'product': product})
+
 def main(request):
+    
     return render(request, 'main.html')
 
 class ProductListView(ListView):

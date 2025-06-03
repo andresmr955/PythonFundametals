@@ -14,9 +14,9 @@ class RegisterViewTest(TestCase):
 
     def test_get_returns_200_and_uses_correct_template(self):
         """
-        Al hacer GET a la vista de registro:
-        - Debe responder con status 200.
-        - Debe usar el template 'registration/register.html'.
+        Upon making a GET request to the registration view:
+        - It should respond with status 200.
+        - It should use the 'registration/register.html' template.
         """
         response = self.client.get(self.url)
         self.assertEqual(response.status_code, 200)
