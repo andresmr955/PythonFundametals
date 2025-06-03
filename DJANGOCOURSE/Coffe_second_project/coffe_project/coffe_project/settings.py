@@ -29,7 +29,7 @@ SECRET_KEY = "django-insecure-syy!k(6bs+tuk(7=+$lpt%^941*-4_l9=74ppzg_b=*y0d%mn8
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    'http://coffe-shop-production.eba-m54dx93v.us-east-1.elasticbeanstalk.com/'
+    'http://coffe-shop-production.eba-spp5q3hp.us-east-1.elasticbeanstalk.com/'
 ]
 
 
@@ -42,7 +42,7 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    "django_extensions",
+    # "django_extensions",
     "crispy_forms",
     "crispy_tailwind",
     "rest_framework",
