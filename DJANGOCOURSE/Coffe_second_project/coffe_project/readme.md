@@ -36,7 +36,7 @@ Install the required Python packages using pip.
 
 ### 4. Configure Environment Variables
 
-Create a` .env `  file in the root of the project. You can use `.env.example` as a template.
+Create a ` .env `  file in the root of the project. You can use `.env.example` as a template.
 
 `cp .env.example .env`
 
@@ -71,7 +71,7 @@ Start the Django development server.
 ./manage.py runserver
 ```
 
-Access the project by navigating to[GitHub Pages](http://127.0.0.1:8000 ) in your web browser.
+Access the project by navigating to [GitHub Pages](http://127.0.0.1:8000 ) in your web browser.
 
 ## Project Structure
 
