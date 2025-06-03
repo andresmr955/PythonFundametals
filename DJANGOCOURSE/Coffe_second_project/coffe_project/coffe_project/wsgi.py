@@ -15,3 +15,4 @@ os.environ.setdefault("DJANGO_SETTINGS_MODULE", "coffe_project.settings")
 
 application = get_wsgi_application()
 
+#

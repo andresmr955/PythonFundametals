@@ -1,0 +1,251 @@
+/* *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+} */
+html, body {
+    height: 100%; /* Muy importante para que flex funcione correctamente */
+}
+
+h1, h2, p{
+    text-align: center;
+
+}
+h1, h2{
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    
+}
+h1{
+    margin: 0;
+    font-size: 40px;
+    margin-bottom: 15px;
+}
+
+img{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: -5px;
+}
+ h2{
+    
+    font-size: 30px;
+}
+.established{
+    font-style:italic;
+}
+hr{
+    height: 2px;
+    background-color: brown ;
+    border-color: brown;
+}
+
+.bottom-line{
+    margin-top: 25px;
+}
+
+
+body{
+    background-image: url(https://cdn.freecodecamp.org/curriculum/css-cafe/beans.jpg);
+    font-family: sans-serif;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    min-height: 100vh;
+    
+}
+.menu{
+    width: 65%;
+    background-color: burlywood ;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 20px;
+    
+}
+
+.flavor, .dessert{
+    text-align: left;
+    width: 75%;
+}
+
+.price{
+    text-align: right;
+    width: 25%;
+}
+
+.item p{
+    display: inline-block;
+    margin-top: 5px;
+    margin-bottom : 5px;
+    font-size: 18px;
+}
+
+    /*FOOTER*/
+footer{
+    background-color: brown;
+    margin-top: 10px;
+    padding: 0;
+    font-size: 14px;
+    
+}
+.address{
+    margin-bottom: 5px;
+}
+
+
+
+article  .product-description {
+    font-size: 1rem ;
+    line-height: 1.6 ;
+    color: #312b2b ;
+    font-style: italic;
+    flex: 1;         /* toma todo el espacio posible */
+    text-align: left;
+
+}
+
+.description-photo{
+    display: flex;
+    justify-content: space-between;
+
+}
+.product-photo {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    max-width: 200px;  /* o el tamaño que prefieras */
+    height: auto;
+    /* para que no crezca más que su tamaño */
+    border-radius: 10px;
+    
+}
+
+#main-photo{
+    background-image: url(/media/products_photos/background_main.jpg);
+    border-radius: 20px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    
+}
+
+.main-container{
+    position: relative;
+}
+.main-title{
+    position: absolute;
+    top: -300px;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    min-width: 60vw;
+}
+
+.content{
+    flex: 1;
+   
+}
+
+
+#upload-images {
+  width: 32px;
+  height: 32px;
+  padding: 0 !important;
+}
+#upload-images .flex {
+    /* You'd also need to significantly reduce the size of the text and icon
+        within the label to fit into a 32x32px box. */
+    font-size: 0; /* Hide text if it can't fit */
+}
+
+#upload-images .flex svg {
+    width: 20px; /* Example, adjust to fit */
+    height: 20px; /* Example, adjust to fit */
+}
+
+.price-available{
+    display: flex;
+    justify-content: space-between;
+
+}
+
+div.price-available > p{
+    font-size: 1.4rem;
+}
+
+.name-product{
+    font-size: 1.9rem;
+}
+
+.login-title{
+    color: white;
+}
+
+#login-form{
+     color: white;
+}
+
+.content-login-form{
+    border-radius: 4px;
+    
+}
+
+.logout-form{
+    display: inline-block;
+}
+
+.logout-form button {
+  background-color: #8B4513; /* marrón estilo café */
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.1s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+.logout-form button:hover {
+  background-color: #A0522D; /* tono más claro al pasar el mouse */
+  transform: scale(1.03);
+}
+
+.logout-form button:active {
+  transform: scale(0.97);
+}
+
+a{
+  text-decoration: none;
+  color: black;
+}
+
+header{
+    margin-bottom: 20px;
+}
+
+nav a {
+  color: #7B3F00;          /* color café */
+  padding: 8px 12px;       /* espacio para clic más cómodo */
+  text-decoration: none;   /* quitar subrayado */
+  cursor: pointer;         /* cambia el cursor a mano */
+  display: inline-block;   /* para que el padding funcione bien */
+  transition: color 0.3s ease, background-color 0.3s ease; /* animación suave */
+  border-radius: 4px;      /* bordes ligeramente redondeados */
+}
+
+nav a:hover,
+nav a:focus {
+  color: #fff;             /* texto blanco al pasar el mouse o foco */
+  background-color: #633300; /* fondo café oscuro para feedback */
+  outline: none;           /* quita el borde azul del foco por defecto */
+  box-shadow: 0 0 0 3px rgba(99, 51, 0, 0.5); /* foco visible accesible */
+}
+
+nav ul:first-of-type{
+    margin-bottom: 0;
+}
+
+#login-btn{
+    border-radius: 8px;
+    
+}

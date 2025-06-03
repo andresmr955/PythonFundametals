@@ -29,9 +29,9 @@ SECRET_KEY = "django-insecure-syy!k(6bs+tuk(7=+$lpt%^941*-4_l9=74ppzg_b=*y0d%mn8
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    'http://coffe-shop-production.eba-spp5q3hp.us-east-1.elasticbeanstalk.com/'
+    'coffe-shop-production.eba-qyhmwffc.us-east-1.elasticbeanstalk.com'
 ]
-
+#
 
 # Application definition
 
@@ -164,6 +164,12 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
 STATIC_URL = "/static/"
+
+STATIC_URL = "/static/"
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+
 
 CRISPY_ALLOWED_TEMPLATE_PACKS = "tailwind"
 
