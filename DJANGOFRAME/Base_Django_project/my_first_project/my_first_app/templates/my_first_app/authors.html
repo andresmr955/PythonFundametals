@@ -1,0 +1,32 @@
+{% extends "my_first_app/base.html" %}
+
+    {% block header %} 
+        Authors List
+    {% endblock %}
+
+    {% block content %}
+            {% if message %}
+                <p>{{ message }}</p>
+                {% endif %}
+
+        {%if authors_list%}
+            <table>
+            <tr>
+                <td>ID</td>
+                <td>NAME</td>
+                <td>BIRTHDAY</td>
+                <td>SLUG</td>
+            </tr>
+            {% for author in authors_list %}
+            <tr>
+                <td>{{author.id}}</td>
+                <td><a href="{% url 'author_detail' slug=author.slug_author %}">{{author.name}}</a></td>
+                <td>{{author.birth_date}}</td>
+                <td>{{author.slug_author}}</td>
+            </tr>
+            {%endfor%}
+            </table>
+        {% else %}
+            <p>No authors available.</p>
+        {% endif %}
+    {% endblock %}

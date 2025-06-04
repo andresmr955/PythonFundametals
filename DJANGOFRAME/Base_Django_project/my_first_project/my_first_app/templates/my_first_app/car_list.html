@@ -1,0 +1,34 @@
+{% extends "my_first_app/base.html" %}
+
+{% block title %}This is a car list{% endblock %}
+{% block header %}
+    <h2>Stock Cars</h2>
+{% endblock %}
+{% block content%}
+   
+                {% if message %}
+                <p>{{ message }}</p>
+                {% endif %}
+
+        {% if car_list %}
+            <table>
+                <tr>
+                    <th>Title</th>
+                    <th>Year</th>
+                    <th>Color</th>
+                    <th>Slug</th>
+                </tr>
+                {% for car in car_list %}
+                    <tr>
+                        <td>{{ car.title }}</td>
+                        <td>{{ car.year }}</td>
+                        <td>{{ car.color }}</td>
+                        <td>{{ car.slug }}</td>
+                    </tr>
+                {% endfor %}
+            </table>
+        {% else %}
+            <p>No cars available.</p>
+        {% endif %}
+
+{% endblock %}
