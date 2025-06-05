@@ -1,5 +1,5 @@
 import random
-from bubblesort import selection_sort_ascending
+from e_bubblesort import selection_sort_ascending
 
 def binary_search(target, lst, start, final):
     print(f"Searching {target} between {lst[start]} and {lst[final - 1]}")
