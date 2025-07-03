@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>🌡️ Weather App</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background: linear-gradient(to top, #dfe9f3 0%, white 100%);
+      padding: 2rem;
+    }
+    input, button {
+      padding: 10px;
+      font-size: 1rem;
+      margin-top: 10px;
+    }
+    .weather {
+      margin-top: 20px;
+      font-size: 1.2rem;
+    }
+  </style>
+</head>
+<body>
+  <h1>🌡️ ☀️ ☁️ Consult the current weather</h1>
+  
+  <input type="text" id="city" placeholder="Write a city's name" />
+  <button onclick="getWeather()">Check Weather</button>
+
+  <div class="weather" id="weatherResult"></div>
+
+  <script>
+    const API_KEY = "65aaa2e98882febfe49033b280f1ca62";
+
+    async function getWeather() {
+      const city = document.getElementById("city").value.trim();
+      const resultDiv = document.getElementById("weatherResult");
+
+      if (!city) {
+        resultDiv.innerHTML = "<p style='color: red;'>Please enter a city name.</p>";
+        return;
+      }
+
+      const url = `https://api.openweathermap.org/data/2.5/weather?q=${encodeURIComponent(city)}&appid=${API_KEY}&units=metric`;
+
+      try {
+        const response = await fetch(url);
+        if (!response.ok) throw new Error("City not found");
+
+        const data = await response.json();
+
+        resultDiv.innerHTML = `
+          <h2>The weather in ${city.charAt(0).toUpperCase() + city.slice(1)}</h2>
+          <p>🌡️ Temperature: ${data.main.temp} °C</p>
+          <p>💧 Humidity: ${data.main.humidity}%</p>
+          <p>☁️ Status: ${data.weather[0].description}</p>
+        `;
+      } catch (err) {
+        resultDiv.innerHTML = `<p style='color: red;'>${err.message}</p>`;
+      }
+    }
+  </script>
+</body>
+</html>
